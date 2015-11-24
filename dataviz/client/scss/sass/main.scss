@@ -20,6 +20,10 @@ body {
     filter: blur(3px);
   }
 
+  .navbar {
+    background: transparent;
+    border-color: transparent;
+  }
 
   #body-wrapper {
     position: absolute;
@@ -28,6 +32,17 @@ body {
 
     .weather-wrapper{
       padding-top: 25vh;
+
+      #temperature{
+        color: #122b40;
+        font-size: 8em;
+      }
+
+      small{
+        color: #122b40;
+        font-size: 0.25em;
+      }
+
     }
   }
 

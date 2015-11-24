@@ -22,8 +22,8 @@ Weather = React.createClass({
                 <li className="list-group-item">Dimanche</li>
             </ul>
         </div>
-        <div className="col-md-6">
-            <h1>{this.props.weather.temperature}&#186;C</h1>
+        <div className="col-md-6" id="temperature">
+            <h1>{this.props.weather.temperature}&#186;<small>C</small></h1>
         </div>
         <div className="days col-md-3" >
             <div className="btn-group-vertical" role="group">

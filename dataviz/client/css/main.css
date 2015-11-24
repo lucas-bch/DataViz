@@ -68,6 +68,15 @@ h1, h2, h3, h4, h4 {
   font-family: 'Roboto', sans-serif;
 }
 
+/* line 7, ../scss/sass/_base.scss */
+h1 {
+  font-weight: 700;
+}
+/* line 10, ../scss/sass/_base.scss */
+h1 small {
+  font-weight: 700;
+}
+
 /* line 6, ../scss/sass/main.scss */
 body #body-background {
   position: absolute;
@@ -85,13 +94,28 @@ body #body-background {
   -ms-filter: blur(3px);
   filter: blur(3px);
 }
-/* line 24, ../scss/sass/main.scss */
+/* line 23, ../scss/sass/main.scss */
+body .navbar {
+  background: transparent;
+  border-color: transparent;
+}
+/* line 28, ../scss/sass/main.scss */
 body #body-wrapper {
   position: absolute;
   width: 100%;
   z-index: 2;
 }
-/* line 29, ../scss/sass/main.scss */
+/* line 33, ../scss/sass/main.scss */
 body #body-wrapper .weather-wrapper {
   padding-top: 25vh;
+}
+/* line 36, ../scss/sass/main.scss */
+body #body-wrapper .weather-wrapper #temperature {
+  color: #122b40;
+  font-size: 8em;
+}
+/* line 41, ../scss/sass/main.scss */
+body #body-wrapper .weather-wrapper small {
+  color: #122b40;
+  font-size: 0.25em;
 }
