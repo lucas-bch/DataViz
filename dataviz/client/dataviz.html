@@ -1,0 +1,38 @@
+<head>
+    <title>dataviz</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/css/weather-icons.css">
+</head>
+
+<body>
+<div class="body-wrapper">
+    <div class="weather-cover">
+        {{> header}}
+        <div class="weather-wrapper">
+            <div class="container">
+                <div class="row">
+                    {{> weather}}
+                </div>
+            </div>
+        </div>
+        <div class="puncline-wrapper">
+            <div class="container">
+                <div class="row">
+                    {{> punchline}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+
+
+
+
+<template name="punchline">
+    <h2>Cloudy Today</h2>
+</template>
