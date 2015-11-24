@@ -86,8 +86,12 @@ body #body-background {
   filter: blur(3px);
 }
 /* line 23, ../scss/sass/main.scss */
-body #body {
+body #body-wrapper {
   position: absolute;
   width: 100%;
   z-index: 2;
+}
+/* line 28, ../scss/sass/main.scss */
+body #body-wrapper .weather-wrapper {
+  padding-top: 25vh;
 }
