@@ -1,8 +1,13 @@
 Weather = React.createClass({
   propTypes: {
-    // This component gets the task to display through a React prop.
-    // We can use propTypes to indicate it is required
-    weather: React.PropTypes.object.isRequired
+    key: React.PropTypes.number.isRequired
+  },
+  getInitialState: function() {
+    return {
+      temperature: 24
+    };
+  },
+  componentDidMount: function() {
   },
   render: function() {
     return (
@@ -11,19 +16,9 @@ Weather = React.createClass({
           <button className="btn btn default">Hourly</button>
           <button className="btn btn default">Daily</button>
         </div>
-        <div className="days col-md-3">
-            <ul className="list-group">
-                <li className="list-group-item">Lundi</li>
-                <li className="list-group-item">Mardi</li>
-                <li className="list-group-item">Mercredi</li>
-                <li className="list-group-item">Jeudi</li>
-                <li className="list-group-item">Vendredi</li>
-                <li className="list-group-item">Samedi</li>
-                <li className="list-group-item">Dimanche</li>
-            </ul>
-        </div>
+
         <div className="col-md-6" id="temperature">
-            <h1>{this.props.weather.temperature}&#186;<small>C</small></h1>
+            <h1>{this.state.temperature}&#186;<small>C</small></h1>
         </div>
         <div className="days col-md-3" >
             <div className="btn-group-vertical" role="group">
