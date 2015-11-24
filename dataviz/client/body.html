@@ -1,33 +1,34 @@
 
+<head>
+    <title>dataviz</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/css/weather-icons.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+</head>
 
-<template name="weather" >
- <div id="mode-weather">
-     <button class="btn btn default">Hourly</button>
-     <button class="btn btn default">Daily</button>
- </div>
-    <div class="days col-md-3" >
-        <ul class="list-group">
-            <li class="list-group-item">Lundi</li>
-            <li class="list-group-item">Mardi</li>
-            <li class="list-group-item">Mercredi</li>
-            <li class="list-group-item">Jeudi</li>
-            <li class="list-group-item">Vendredi</li>
-            <li class="list-group-item">Samedi</li>
-            <li class="list-group-item">Dimanche</li>
-        </ul>
-    </div>
-    <div class="col-md-6">
-        <h1>23°C</h1>
-    </div>
-    <div class="days col-md-3" >
-        <div class="btn-group-vertical" role="group">
-            <button type="button" class="btn btn-default"><i class="wi wi-thermometer"></i></button>
-            <button type="button" class="btn btn-default"><i class="wi wi-thermometer"></i></button>
-            <button type="button" class="btn btn-default"><i class="wi wi-thermometer"></i></button>
-            <button type="button" class="btn btn-default"><i class="wi wi-thermometer"></i></button>
+<body>
+
+<div id="body-background"></div>
+
+<div id="body">
+    <div class="weather-cover">
+        {{> header}}
+        <div class="weather-wrapper">
+            <div class="container">
+                <div class="row">
+                    {{> dataviz}}
+                </div>
+            </div>
         </div>
-    </div>
-    <div id="graphique-weather">
+        <div class="puncline-wrapper">
+            <div class="container">
+                <div class="row">
+                    {{> punchline}}
+                </div>
+            </div>
+        </div>
 
     </div>
-</template>
+</div>
+</body>
