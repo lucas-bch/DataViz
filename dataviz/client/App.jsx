@@ -18,11 +18,7 @@ App = React.createClass({
             <Header />
             <div className="weather-wrapper">
                 <div className="container">
-                    <div className="row">
-                      <ul>
-                        { this.renderWeathers() }
-                      </ul>
-                    </div>
+                    { this.renderWeathers() }
                 </div>
             </div>
             <div className="puncline-wrapper">
@@ -34,6 +30,5 @@ App = React.createClass({
             </div>
         </div>
     );
-
   }
 });
