@@ -1,9 +1,9 @@
 @import "compass/reset";
 @import "base" ;
 
-body{
+body {
 
-  #body-background{
+  #body-background {
     position: absolute;
     background-image: url(/images/bg.jpg);
     background-size: cover;
@@ -20,7 +20,8 @@ body{
     filter: blur(3px);
   }
 
-  #body-wrapper{
+
+  #body-wrapper {
     position: absolute;
     width: 100%;
     z-index: 2;
