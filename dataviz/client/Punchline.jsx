@@ -1,5 +1,5 @@
 Punchline = React.createClass({
   render: function() {
-    return (<div></div>);
+    return (<h2>Cloudy Today</h2>);
   }
 });

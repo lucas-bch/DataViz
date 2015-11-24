@@ -63,8 +63,31 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* line 5, ../scss/sass/main.scss */
-body .body-wrapper {
-  background-image: url("../../../public/images/bg.jpg");
+/* line 3, ../scss/sass/_base.scss */
+h1, h2, h3, h4, h4 {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* line 6, ../scss/sass/main.scss */
+body #body-background {
+  position: absolute;
+  background-image: url(/images/bg.jpg);
   background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}
+/* line 23, ../scss/sass/main.scss */
+body #body {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
 }

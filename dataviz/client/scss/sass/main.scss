@@ -1,10 +1,30 @@
 @import "compass/reset";
-
+@import "base" ;
 
 body {
-  .body-wrapper{
-    background-image: url("../../public/images/bg.jpg");
-    background-size: cover;
 
+  #body-background {
+    position: absolute;
+    background-image: url(/images/bg.jpg);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
   }
+
+  #body-wrapper {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+  }
+
+
 }

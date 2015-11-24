@@ -1,9 +1,9 @@
 App = React.createClass({
   getWeathers: function() {
     return [
-      { _id: 1, text: "This is weather 1" },
-      { _id: 2, text: "This is weather 2" },
-      { _id: 3, text: "This is weather 3" }
+      { _id: 1, temperature: "23" },
+      { _id: 2, temperature: "24" },
+      { _id: 3, temperature: "25" }
     ];
   },
   renderWeathers: function() {
