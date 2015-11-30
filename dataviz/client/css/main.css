@@ -26,14 +26,21 @@ body #body-background {
   left: 0;
   right: 0;
   z-index: 1;
+  background-image: url(/images/bg1.jpg);
+  background-size: cover;
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
 }
-/* line 18, ../scss/sass/main.scss */
+/* line 25, ../scss/sass/main.scss */
 body #body-wrapper {
   position: absolute;
   width: 100%;
   z-index: 2;
 }
-/* line 24, ../scss/sass/main.scss */
+/* line 31, ../scss/sass/main.scss */
 body #body-wrapper .organic_search {
   background: #F1F1F1 none repeat scroll 0% 0%;
   height: 50px;
@@ -47,7 +54,7 @@ body #body-wrapper .organic_search {
   transform-origin: 100% 0px 0px;
   transition: all 500ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
 }
-/* line 37, ../scss/sass/main.scss */
+/* line 44, ../scss/sass/main.scss */
 body #body-wrapper .organic_search .organic_search_control {
   color: white;
   position: fixed;
@@ -58,14 +65,14 @@ body #body-wrapper .organic_search .organic_search_control {
   text-align: center;
   transition: all 500ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
 }
-/* line 46, ../scss/sass/main.scss */
+/* line 53, ../scss/sass/main.scss */
 body #body-wrapper .organic_search .organic_search_control i {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-/* line 54, ../scss/sass/main.scss */
+/* line 61, ../scss/sass/main.scss */
 body #body-wrapper .organic_search .organic_search_form {
   display: none;
   width: 80%;
@@ -77,7 +84,7 @@ body #body-wrapper .organic_search .organic_search_form {
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 }
-/* line 65, ../scss/sass/main.scss */
+/* line 72, ../scss/sass/main.scss */
 body #body-wrapper .organic_search .organic_search_form .organic_search_input {
   width: 100%;
   height: 100%;
@@ -89,7 +96,7 @@ body #body-wrapper .organic_search .organic_search_form .organic_search_input {
   color: #EC5A62;
   transition: font-size 500ms cubic-bezier(0.7, 0, 0.3, 1) 0s;
 }
-/* line 81, ../scss/sass/main.scss */
+/* line 88, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.open {
   width: 100%;
   height: 100%;
@@ -97,7 +104,7 @@ body #body-wrapper .organic_search.open {
   right: 0px;
   border-radius: 0%;
 }
-/* line 88, ../scss/sass/main.scss */
+/* line 95, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.open .organic_search_control {
   color: black;
   width: 50px;
@@ -106,57 +113,56 @@ body #body-wrapper .organic_search.open .organic_search_control {
   right: 20px;
   transition: all 500ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
 }
-/* line 97, ../scss/sass/main.scss */
+/* line 104, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.open .organic_search_form {
   display: block;
 }
-/* line 109, ../scss/sass/main.scss */
+/* line 116, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .ct-series-a .ct-line,
 body #body-wrapper main .weather-wrapper .ct-series-a .ct-point {
   stroke: blue;
 }
-/* line 114, ../scss/sass/main.scss */
+/* line 121, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .ct-series-b .ct-line,
 body #body-wrapper main .weather-wrapper .ct-series-b .ct-point {
   stroke: green;
 }
-/* line 124, ../scss/sass/main.scss */
-body #body-wrapper main .weather-wrapper .weather-body .weather-intro {
-  background-image: url(/images/bg.jpg);
-  background-size: cover;
-}
-/* line 130, ../scss/sass/main.scss */
+/* line 134, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content {
   padding-top: 50px;
 }
-/* line 135, ../scss/sass/main.scss */
+/* line 137, ../scss/sass/main.scss */
+body #body-wrapper main .weather-wrapper .weather-body .weather-content .card {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+/* line 143, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content .weather-types .type-weather {
   display: block;
   margin: auto;
   margin-top: 20px;
 }
-/* line 143, ../scss/sass/main.scss */
+/* line 151, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content .weather-options .weather-option {
   display: block;
   margin: auto;
   margin-top: 20px;
 }
-/* line 153, ../scss/sass/main.scss */
+/* line 161, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .city-name-wrapper {
   text-align: center;
   color: #122b40;
   font-size: 7em;
 }
-/* line 159, ../scss/sass/main.scss */
+/* line 167, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-temperature-wrapper {
   text-align: center;
 }
-/* line 166, ../scss/sass/main.scss */
+/* line 174, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper #temperature {
   color: #122b40;
   font-size: 6em;
 }
-/* line 171, ../scss/sass/main.scss */
+/* line 179, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper small {
   color: #122b40;
   font-size: 0.50em;

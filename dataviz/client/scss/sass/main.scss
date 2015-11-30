@@ -12,6 +12,13 @@ body {
     left: 0;
     right: 0;
     z-index: 1;
+    background-image: url(/images/bg1.jpg);
+    background-size: cover;
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
 
   }
 
@@ -122,13 +129,14 @@ body {
         .weather-body{
 
           .weather-intro{
-            background-image: url(/images/bg.jpg);
-
-            background-size: cover;
           }
 
           .weather-content{
             padding-top: 50px;
+
+            .card{
+             background-color: rgba(255,255,255,0.9) !important;
+            }
 
             .weather-types{
 
