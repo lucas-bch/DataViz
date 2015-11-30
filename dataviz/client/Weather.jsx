@@ -3,33 +3,76 @@
 
 Weather = React.createClass({
     propTypes: {
-        key: React.PropTypes.number.isRequired
+        city: React.PropTypes.string.isRequired
     },
     getInitialState: function() {
-
         return {
-            temperature: 24,
-            name:  "Toulouse"
+            list: [ {
+                "dt":0,
+                "main":{
+                    "temp":0,
+                    "temp_min":0,
+                    "temp_max":0,
+                    "pressure":0,
+                    "sea_level":0,
+                    "grnd_level":0,
+                    "humidity":0,
+                    "temp_kf":0
+                },
+                "weather":[
+                    {
+                        "id":0,
+                        "main":"",
+                        "description":"",
+                        "icon":""
+                    }
+                ],
+                "clouds":{
+                    "all":0
+                },
+                "wind":{
+                    "speed":0,
+                    "deg":0
+                },
+                "sys":{
+                    "pod":""
+                },
+                "dt_txt":""
+            } ]
         };
     },
+    componentWillMount: function() {
+        console.log(this.state.list[0]);
+    },
     componentDidMount: function() {
+        $.get('/json/toulouse-5days.json', function(result) {
+            if (this.isMounted()) {
+                
+                result.list.forEach(function(element, index){
+                    element.main.temp = (element.main.temp - 273).toFixed(1);
+                });
+                this.setState({
+                    list: result.list
+                });
+            }
+        }.bind(this));
+
     },
     render: function() {
         return (
             <div className="row weather-body">
                 <div className=" col m12 city-name-wrapper weather-intro">
                     <div className="container">
-                        <h1> {this.state.name} <i className="wi wi-day-sunny"></i></h1>
+                        <h1> { this.props.city } <i className="wi wi-day-sunny"></i></h1>
                         <div className=" weather-temperature-wrapper">
                             <div  id="temperature">
                                 <h1>
-                                    {this.state.temperature}°<small>C</small>
+                                    { this.state.list[0].main.temp }°<small>C</small>
                                 </h1>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div className="col m12 l12 cyan weather-content">
                     <div className="container ">
 

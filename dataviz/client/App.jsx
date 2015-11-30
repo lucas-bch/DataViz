@@ -1,4 +1,13 @@
 App = React.createClass({
+  search: function(seachedCity) {
+    this.setState({city: seachedCity});
+  },
+    getInitialState: function() {
+        return {
+            city: 'Toulouse'
+        };
+    },
+
   render: function() {
     return (
 
@@ -6,7 +15,7 @@ App = React.createClass({
             <OrganicSearch />
             <main>
                 <div className=" weather-wrapper">
-                    <Weather key="1" />
+                    <Weather city={ this.state.city } />
                 </div>
             </main>
         </div>
