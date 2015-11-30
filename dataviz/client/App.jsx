@@ -3,9 +3,8 @@ App = React.createClass({
     return (
 
         <div className="weather-cover">
+            <OrganicSearch />
             <main>
-                <OrganicSearch />
-                <Header />
                 <div className=" weather-wrapper">
                     <Weather key="1" />
                 </div>

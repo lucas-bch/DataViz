@@ -1,6 +1,8 @@
 
 @import "base" ;
 
+$transition_duration: 500ms;
+
 body {
 
   #body-background {
@@ -20,37 +22,56 @@ body {
 
     //Close
     .organic_search{
-      width: 200px;
-      min-height: 40px;
-      background: #F1F1F1 none repeat scroll 0% 0%;
-      position: absolute;
-      z-index: 10000;
-      top: 50px;
-      right: 50px;
-      transform-origin: 100% 0px 0px;
-      transition-property: min-height, width, top, right;
-      transition-duration: 0.5s;
-      transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+        background: #F1F1F1 none repeat scroll 0% 0%;
+        height: 50px;
+        width: 50px;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 10000;
+        border-radius: 50%;
+        overflow: hidden;
+        transform-origin: 100% 0px 0px;
+        transition: all $transition_duration cubic-bezier(0.7, 0, 0.3, 1) 0ms;
 
-      .organic_search_form{
-        width: 100%;
-        height: 40px;
+      .organic_search_control {
+            color: white;
+            position: fixed;
+            height: 50px;
+            width: 50px;
+            top: 20px;
+            right: 20px;
+            text-align: center;
+            transition: all $transition_duration cubic-bezier(0.7, 0, 0.3, 1) 0ms;
+            i {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+      }
+
+      .organic_search_form {
+        display: none;
+        width: 80%;
+        height: 160px;
         margin: 0px auto;
+        transform: translate3d(0px, 3em, 0px);
         position: relative;
         transition-property: width, height, transform;
-        transition-duration: 0.5s;
+        transition-duration: $transition_duration;
         transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 
         .organic_search_input{
           width: 100%;
           height: 100%;
-          padding: 0px 10% 0px 10px;
+          padding: 0;
           font-weight: 700;
           border: medium none;
           background: transparent none repeat scroll 0% 0%;
-          font-size: 0.8em;
+          font-size: 7em;
           color: #EC5A62;
-          transition: font-size 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+          transition: font-size $transition_duration cubic-bezier(0.7, 0, 0.3, 1) 0s;
         }
       }
 
@@ -58,20 +79,24 @@ body {
 
     // Open
     .organic_search.open{
-      position: absolute;
       width: 100%;
-      min-height: 100%;
+      height: 100%;
       top: 0px;
       right: 0px;
-      .organic_search_form{
-        width: 80%;
-        height: 160px;
-        transform: translate3d(0px, 3em, 0px);
-        .organic_search_input{
-          font-size: 7em;
-        }
+      border-radius: 0%;
+
+      .organic_search_control {
+            color: black;
+            width: 50px;
+            height: 50px;
+            top: 20px;
+            right: 20px;
+            transition: all $transition_duration cubic-bezier(0.7, 0, 0.3, 1) 0ms;
       }
 
+      .organic_search_form {
+        display: block;
+      }
     }
 
 
