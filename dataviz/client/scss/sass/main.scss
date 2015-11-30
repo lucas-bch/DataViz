@@ -41,6 +41,7 @@ body {
             width: 50px;
             top: 20px;
             right: 20px;
+            border-radius: 50%;
             text-align: center;
             transition: all $transition_duration cubic-bezier(0.7, 0, 0.3, 1) 0ms;
             i {
