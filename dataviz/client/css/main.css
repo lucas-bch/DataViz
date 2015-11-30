@@ -1,68 +1,3 @@
-/* line 5, ../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-
-/* line 22, ../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-html {
-  line-height: 1;
-}
-
-/* line 24, ../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-ol, ul {
-  list-style: none;
-}
-
-/* line 26, ../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* line 28, ../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-/* line 30, ../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-q, blockquote {
-  quotes: none;
-}
-/* line 103, ../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-q:before, q:after, blockquote:before, blockquote:after {
-  content: "";
-  content: none;
-}
-
-/* line 32, ../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-a img {
-  border: none;
-}
-
-/* line 116, ../../../../../../../Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
-  display: block;
-}
-
 /* line 3, ../scss/sass/_base.scss */
 h1, h2, h3, h4, h4 {
   font-family: 'Roboto', sans-serif;
@@ -77,14 +12,17 @@ h1 small {
   font-weight: 700;
 }
 
+/* line 15, ../scss/sass/_base.scss */
+.inline li {
+  display: inline;
+  list-style-type: none;
+}
+
 /* line 6, ../scss/sass/main.scss */
 body #body-background {
   position: absolute;
-  background-image: url(/images/bg.jpg);
-  background-size: cover;
   height: 100%;
   width: 100%;
-  position: fixed;
   left: 0;
   right: 0;
   z-index: 1;
@@ -94,28 +32,43 @@ body #body-background {
   -ms-filter: blur(3px);
   filter: blur(3px);
 }
-/* line 23, ../scss/sass/main.scss */
-body .navbar {
-  background: transparent;
-  border-color: transparent;
-}
-/* line 28, ../scss/sass/main.scss */
+/* line 20, ../scss/sass/main.scss */
 body #body-wrapper {
   position: absolute;
   width: 100%;
   z-index: 2;
 }
-/* line 33, ../scss/sass/main.scss */
-body #body-wrapper .weather-wrapper {
-  padding-top: 25vh;
+/* line 25, ../scss/sass/main.scss */
+body #body-wrapper main {
+  padding-left: 240px;
 }
-/* line 36, ../scss/sass/main.scss */
-body #body-wrapper .weather-wrapper #temperature {
-  color: #122b40;
-  font-size: 8em;
+/* line 39, ../scss/sass/main.scss */
+body #body-wrapper main .weather-wrapper .weather-body .weather-intro {
+  background-image: url(/images/bg.jpg);
+  background-size: cover;
 }
-/* line 41, ../scss/sass/main.scss */
-body #body-wrapper .weather-wrapper small {
+/* line 43, ../scss/sass/main.scss */
+body #body-wrapper main .weather-wrapper .weather-body .card-action-buttons {
+  margin: -26px 10px 0px 0px;
+  text-align: right;
+}
+/* line 49, ../scss/sass/main.scss */
+body #body-wrapper main .weather-wrapper .weather-body .city-name-wrapper {
+  text-align: center;
   color: #122b40;
-  font-size: 0.25em;
+  font-size: 7em;
+}
+/* line 55, ../scss/sass/main.scss */
+body #body-wrapper main .weather-wrapper .weather-body .weather-temperature-wrapper {
+  text-align: center;
+}
+/* line 60, ../scss/sass/main.scss */
+body #body-wrapper main .weather-wrapper #temperature {
+  color: #122b40;
+  font-size: 6em;
+}
+/* line 65, ../scss/sass/main.scss */
+body #body-wrapper main .weather-wrapper small {
+  color: #122b40;
+  font-size: 0.50em;
 }

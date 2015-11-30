@@ -1,15 +1,12 @@
-@import "compass/reset";
+
 @import "base" ;
 
 body {
 
   #body-background {
     position: absolute;
-    background-image: url(/images/bg.jpg);
-    background-size: cover;
     height: 100%;
     width: 100%;
-    position: fixed;
     left: 0;
     right: 0;
     z-index: 1;
@@ -20,30 +17,60 @@ body {
     filter: blur(3px);
   }
 
-  .navbar {
-    background: transparent;
-    border-color: transparent;
-  }
-
   #body-wrapper {
     position: absolute;
     width: 100%;
     z-index: 2;
 
-    .weather-wrapper{
-      padding-top: 25vh;
+    main{
+      padding-left: 240px;
 
-      #temperature{
-        color: #122b40;
-        font-size: 8em;
+      // Weather
+      .weather-wrapper{
+
+        // Nav
+        .weather-nav{
+
+        }
+
+        // Body
+        .weather-body{
+
+          .weather-intro{
+            background-image: url(/images/bg.jpg);
+            background-size: cover;
+          }
+          .card-action-buttons{
+            margin: -26px 10px 0px 0px;
+            text-align: right;
+          }
+
+          // city name
+          .city-name-wrapper{
+            text-align: center;
+            color: #122b40;
+            font-size: 7em;
+          }
+
+          .weather-temperature-wrapper{
+            text-align: center;
+          }
+        }
+
+        #temperature{
+          color: #122b40;
+          font-size: 6em;
+        }
+
+        small{
+          color: #122b40;
+          font-size: 0.50em;
+        }
+
       }
-
-      small{
-        color: #122b40;
-        font-size: 0.25em;
-      }
-
     }
+
+
   }
 
 
