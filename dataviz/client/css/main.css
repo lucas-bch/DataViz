@@ -26,48 +26,114 @@ body #body-background {
   left: 0;
   right: 0;
   z-index: 1;
-  -webkit-filter: blur(3px);
-  -moz-filter: blur(3px);
-  -o-filter: blur(3px);
-  -ms-filter: blur(3px);
-  filter: blur(3px);
 }
-/* line 20, ../scss/sass/main.scss */
+/* line 16, ../scss/sass/main.scss */
 body #body-wrapper {
   position: absolute;
   width: 100%;
   z-index: 2;
 }
-/* line 25, ../scss/sass/main.scss */
-body #body-wrapper main {
-  padding-left: 240px;
+/* line 22, ../scss/sass/main.scss */
+body #body-wrapper .organic_search {
+  width: 200px;
+  min-height: 40px;
+  background: #F1F1F1 none repeat scroll 0% 0%;
+  position: absolute;
+  z-index: 10000;
+  top: 50px;
+  right: 50px;
+  transform-origin: 100% 0px 0px;
+  transition-property: min-height, width, top, right;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 }
-/* line 39, ../scss/sass/main.scss */
+/* line 35, ../scss/sass/main.scss */
+body #body-wrapper .organic_search .organic_search_form {
+  width: 100%;
+  height: 40px;
+  margin: 0px auto;
+  position: relative;
+  transition-property: width, height, transform;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+}
+/* line 44, ../scss/sass/main.scss */
+body #body-wrapper .organic_search .organic_search_form .organic_search_input {
+  width: 100%;
+  height: 100%;
+  padding: 0px 10% 0px 10px;
+  font-weight: 700;
+  border: medium none;
+  background: transparent none repeat scroll 0% 0%;
+  font-size: 0.8em;
+  color: #EC5A62;
+  transition: font-size 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+}
+/* line 60, ../scss/sass/main.scss */
+body #body-wrapper .organic_search.open {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  top: 0px;
+  right: 0px;
+}
+/* line 66, ../scss/sass/main.scss */
+body #body-wrapper .organic_search.open .organic_search_form {
+  width: 80%;
+  height: 160px;
+  transform: translate3d(0px, 3em, 0px);
+}
+/* line 70, ../scss/sass/main.scss */
+body #body-wrapper .organic_search.open .organic_search_form .organic_search_input {
+  font-size: 7em;
+}
+/* line 84, ../scss/sass/main.scss */
+body #body-wrapper main .weather-wrapper .ct-series-a .ct-line,
+body #body-wrapper main .weather-wrapper .ct-series-a .ct-point {
+  stroke: blue;
+}
+/* line 89, ../scss/sass/main.scss */
+body #body-wrapper main .weather-wrapper .ct-series-b .ct-line,
+body #body-wrapper main .weather-wrapper .ct-series-b .ct-point {
+  stroke: green;
+}
+/* line 99, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-intro {
   background-image: url(/images/bg.jpg);
   background-size: cover;
 }
-/* line 43, ../scss/sass/main.scss */
-body #body-wrapper main .weather-wrapper .weather-body .card-action-buttons {
-  margin: -26px 10px 0px 0px;
-  text-align: right;
+/* line 105, ../scss/sass/main.scss */
+body #body-wrapper main .weather-wrapper .weather-body .weather-content {
+  padding-top: 50px;
 }
-/* line 49, ../scss/sass/main.scss */
+/* line 110, ../scss/sass/main.scss */
+body #body-wrapper main .weather-wrapper .weather-body .weather-content .weather-types .type-weather {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+}
+/* line 118, ../scss/sass/main.scss */
+body #body-wrapper main .weather-wrapper .weather-body .weather-content .weather-options .weather-option {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+}
+/* line 128, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .city-name-wrapper {
   text-align: center;
   color: #122b40;
   font-size: 7em;
 }
-/* line 55, ../scss/sass/main.scss */
+/* line 134, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-temperature-wrapper {
   text-align: center;
 }
-/* line 60, ../scss/sass/main.scss */
+/* line 141, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper #temperature {
   color: #122b40;
   font-size: 6em;
 }
-/* line 65, ../scss/sass/main.scss */
+/* line 146, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper small {
   color: #122b40;
   font-size: 0.50em;

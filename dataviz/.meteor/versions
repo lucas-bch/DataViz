@@ -26,6 +26,7 @@ ecmascript-runtime@0.2.6
 ejson@1.0.7
 es5-shim@4.1.14
 fastclick@1.0.7
+fourseven:scss@3.4.1
 geojson-utils@1.0.4
 hot-code-push@1.0.0
 html-tools@1.0.5
@@ -36,12 +37,14 @@ insecure@1.0.4
 jquery@1.11.4
 jsx@0.2.3
 launch-screen@1.0.4
+lawshe:full-page@1.2.6
 less@2.5.1
 livedata@1.0.15
 logging@1.0.8
 materialize:materialize@0.97.3
 meteor@1.1.10
 meteor-base@1.0.1
+mfpierre:chartist-js@1.6.1
 minifiers@1.1.7
 minimongo@1.0.10
 mobile-experience@1.0.1

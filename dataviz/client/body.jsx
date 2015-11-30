@@ -1,62 +1,21 @@
+
+
 var data = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
-  datasets: [
-    {
-      fillColor: "rgba(151,187,205,0.5)",
-      strokeColor: "rgba(151,187,205,1)",
-      pointColor: "rgba(151,187,205,1)",
-      pointStrokeColor: "#fff",
-      data: [28, 48, 40, 19, 96, 27, 100]
-    }
-  ]
-}
-
-
-var options = {
-
-  scaleFontColor: "#122b40",
-
-  ///Boolean - Whether grid lines are shown across the chart
-  scaleShowGridLines : false,
-
-  //Number - Width of the grid lines
-    scaleGridLineWidth : 0,
-
-  //Boolean - Whether to show horizontal lines (except X axis)
-    scaleShowHorizontalLines: true,
-
-  //Boolean - Whether to show vertical lines (except Y axis)
-    scaleShowVerticalLines: true,
-
-  //Boolean - Whether the line is curved between points
-    bezierCurve : false,
-
-  //Number - Tension of the bezier curve between points
-    bezierCurveTension : 0.4,
-
-  //Boolean - Whether to show a dot for each point
-    pointDot : true,
-
-  //Number - Radius of each point dot in pixels
-    pointDotRadius : 4,
-
-  //Number - Pixel width of point dot stroke
-    pointDotStrokeWidth : 1,
-
-  //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-    pointHitDetectionRadius : 20,
-
-  //Boolean - Whether to show a stroke for datasets
-    datasetStroke : true,
-
-  //Number - Pixel width of dataset stroke
-    datasetStrokeWidth : 2,
-
-  //Boolean - Whether to fill the dataset with a colour
-    datasetFill : true,
-
-
+    // A labels array that can contain any sort of values
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+    // Our series array that contains series objects or in this case series data arrays
+    series: [
+        [5, 2, 4, 2, 0,2,1,3,4  ]
+    ]
 };
+
+// As options we currently only set a static size of 300x200 px
+var options = {
+    height: '250px',
+    low: 0,
+    showArea: true
+};
+
 
 //*******************************
 //              MAIN
@@ -80,10 +39,6 @@ if (Meteor.isClient) {
 
   })
 
-  $(document).onresize(function(){
-
-  })
-
 }
 
 if (Meteor.isServer) {
@@ -99,12 +54,6 @@ if (Meteor.isServer) {
 // Draw chart
 function drawChart() {
 
-  Chart.defaults.global.responsive = false;
-
-  //Get context with jQuery - using jQuery's .get() method.
-  var ctx = $("#myChart").get(0).getContext("2d");
-  //This will get the first returned node in the jQuery collection.
-  var myNewChart = new Chart(ctx);
-
-  new Chart(ctx).Line(data,options);
+    // In the global name space Chartist we call the Line function to initialize a line chart. As a first parameter we pass in a selector where we would like to get our chart created. Second parameter is the actual data object and as a third parameter we pass in our options
+    new Chartist.Line('.ct-chart', data, options);
 }
