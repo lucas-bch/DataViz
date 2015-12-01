@@ -1,15 +1,25 @@
 App = React.createClass({
-  render: function() {
-    return (
+    search: function(seachedCity) {
+        this.setState({city: seachedCity});
+    },
 
-        <div className="weather-cover">
-            <OrganicSearch />
-            <main>
-                <div className=" weather-wrapper">
-                    <Weather key="1" />
-                </div>
-            </main>
-        </div>
-    );
-  }
+    getInitialState: function() {
+        return {
+            city: 'Toulouse'
+        };
+    },
+
+    render: function() {
+        return (
+
+            <div className="weather-cover">
+                <OrganicSearch />
+                <main>
+                    <div className=" weather-wrapper">
+                        <Weather city={ this.state.city } />
+                    </div>
+                </main>
+            </div>
+        );
+    }
 });

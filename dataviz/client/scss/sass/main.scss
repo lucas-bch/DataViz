@@ -29,7 +29,6 @@ body {
 
     //Close
     .organic_search{
-        background: #F1F1F1 none repeat scroll 0% 0%;
         height: 50px;
         width: 50px;
         position: fixed;
@@ -48,8 +47,10 @@ body {
             width: 50px;
             top: 20px;
             right: 20px;
+            border-radius: 50%;
             text-align: center;
             transition: all $transition_duration cubic-bezier(0.7, 0, 0.3, 1) 0ms;
+            background-color: #F44336 ;
             i {
                 position: absolute;
                 top: 50%;
@@ -86,11 +87,12 @@ body {
 
     // Open
     .organic_search.open{
-      width: 100%;
-      height: 100%;
-      top: 0px;
-      right: 0px;
-      border-radius: 0%;
+        background: #F1F1F1 none repeat scroll 0% 0%;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        right: 0px;
+        border-radius: 0%;
 
       .organic_search_control {
             color: black;
