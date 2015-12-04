@@ -13,7 +13,7 @@ App = React.createClass({
         return (
 
             <div className="weather-cover">
-                <OrganicSearch />
+                <OrganicSearch searchHandler={ this.search }/>
                 <main>
                     <div className=" weather-wrapper">
                         <Weather city={ this.state.city } />
