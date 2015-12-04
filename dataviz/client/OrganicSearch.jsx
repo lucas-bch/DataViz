@@ -11,17 +11,17 @@ OrganicSearch = React.createClass({
     search: function(e) {
         e.preventDefault();
         var cityName = e.target.firstChild.value;
-        console.log(cityName);
         this.props.searchHandler(cityName);
-    },
+        if(this.state.isOpened)
+            this.setState({openClass: '', buttonName: 'search', isOpened: false});
+    ,
 
     handleControl: function(e) {
         e.preventDefault();
-        if(this.state.isOpened) {
+        if(this.state.isOpened)
             this.setState({openClass: '', buttonName: 'search', isOpened: false});
-        } else {
+        else
             this.setState({openClass: 'open', buttonName: 'close', isOpened: true});
-        }
     },
 
     render: function() {
