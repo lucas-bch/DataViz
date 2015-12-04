@@ -11,7 +11,6 @@ App = React.createClass({
 
     render: function() {
         return (
-
             <div className="weather-cover">
                 <OrganicSearch searchHandler={ this.search }/>
                 <main>
