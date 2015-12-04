@@ -10,8 +10,9 @@ OrganicSearch = React.createClass({
 
     search: function(e) {
         e.preventDefault();
-        console.log(e);
-        this.props.searchHandler("Toulouse");
+        var cityName = e.target.firstChild.value;
+        console.log(cityName);
+        this.props.searchHandler(cityName);
     },
 
     handleControl: function(e) {
