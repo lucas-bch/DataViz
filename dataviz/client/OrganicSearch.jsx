@@ -18,10 +18,12 @@ OrganicSearch = React.createClass({
 
     handleControl: function(e) {
         e.preventDefault();
-        if(this.state.isOpened)
-            this.setState({openClass: '', buttonName: 'search', isOpened: false});
-        else
-            this.setState({openClass: 'open', buttonName: 'close', isOpened: true});
+        if(this.state.openClass != 'start') {
+            if(this.state.isOpened)
+                this.setState({openClass: '', buttonName: 'search', isOpened: false});
+            else
+                this.setState({openClass: 'open', buttonName: 'close', isOpened: true});
+        }
     },
 
     render: function() {

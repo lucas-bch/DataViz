@@ -107,8 +107,8 @@ Weather = React.createClass({
         return (
             <div className="row weather-body">
                 <div className=" col m12 city-name-wrapper weather-intro">
-                    <div className="container">
-                        <h1> { this.props.city } <i className="wi wi-day-sunny"></i></h1>
+                    <div  className="container">
+                        <h1 id="city" > { this.props.city } <i className="wi wi-day-sunny"></i></h1>
                         <div className=" weather-temperature-wrapper">
                             <div  id="temperature">
                                 <h1>
@@ -119,8 +119,8 @@ Weather = React.createClass({
                     </div>
                 </div>
 
-                <div className="col m12 l12 weather-content">
-                    <div className="container ">
+                <div className="col m12 l12 weather-content-wrapper">
+                    <div className="container weather-content ">
 
                         <div className="card white darken-1">
                             <div className="card-content white-text">
