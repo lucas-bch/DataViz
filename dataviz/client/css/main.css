@@ -84,33 +84,6 @@ h1 small {
     transform: translate3d(0, 0, 0);
   }
 }
-@-webkit-keyframes slide-down {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, -3000px, 0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-}
-@-moz-keyframes slide-down {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, -3000px, 0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-}
-@keyframes slide-down {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, -3000px, 0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-}
 @-webkit-keyframes scale {
   0%,60%,75%, 90%,100% {
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -179,7 +152,6 @@ h1 small {
 }
 @-webkit-keyframes slide-down {
   0% {
-    opacity: 0;
     transform: translate3d(0, -3000px, 0);
   }
   100% {
@@ -188,7 +160,6 @@ h1 small {
 }
 @-moz-keyframes slide-down {
   0% {
-    opacity: 0;
     transform: translate3d(0, -3000px, 0);
   }
   100% {
@@ -197,7 +168,6 @@ h1 small {
 }
 @keyframes slide-down {
   0% {
-    opacity: 0;
     transform: translate3d(0, -3000px, 0);
   }
   100% {
@@ -209,7 +179,6 @@ h1 small {
     transform: translate3d(0, 0, 0);
   }
   100% {
-    opacity: 0;
     transform: translate3d(0, -3000px, 0);
   }
 }
@@ -218,7 +187,6 @@ h1 small {
     transform: translate3d(0, 0, 0);
   }
   100% {
-    opacity: 0;
     transform: translate3d(0, -3000px, 0);
   }
 }
@@ -227,7 +195,6 @@ h1 small {
     transform: translate3d(0, 0, 0);
   }
   100% {
-    opacity: 0;
     transform: translate3d(0, -3000px, 0);
   }
 }
@@ -590,37 +557,15 @@ h1 small {
 
 /* line 130, ../scss/sass/_loadingscreen.scss */
 #loadscreen-wrapper {
-  z-index: 2000;
   position: fixed;
   text-align: center;
   height: 100%;
   width: 100%;
 }
-/* line 137, ../scss/sass/_loadingscreen.scss */
-#loadscreen-wrapper #loadscreen.closed {
-  -webkit-animation-delay: 0;
-  -webkit-animation-duration: 3s;
-  -webkit-animation-name: slide-up;
-  -webkit-animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */
-  -moz-animation-delay: 0;
-  -moz-animation-duration: 3s;
-  -moz-animation-name: slide-up;
-  -moz-animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */
-  -o-animation-delay: 0;
-  -o-animation-duration: 3s;
-  -o-animation-name: slide-up;
-  -o-animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */
-  animation-delay: 0;
-  animation-duration: 3s;
-  animation-name: slide-up;
-  animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */
-}
-/* line 141, ../scss/sass/_loadingscreen.scss */
+/* line 138, ../scss/sass/_loadingscreen.scss */
 #loadscreen-wrapper #loadscreen {
+  display: block;
+  z-index: 2000;
   -webkit-animation-delay: 0;
   -webkit-animation-duration: 1s;
   -webkit-animation-name: slide-down;
@@ -648,7 +593,7 @@ h1 small {
   width: 100%;
   background: #0078CA;
 }
-/* line 149, ../scss/sass/_loadingscreen.scss */
+/* line 148, ../scss/sass/_loadingscreen.scss */
 #loadscreen-wrapper #loadscreen .icon {
   -webkit-animation-delay: 0;
   -webkit-animation-duration: 3s;
@@ -678,12 +623,39 @@ h1 small {
   font-size: 1em;
   /* control icon size here */
 }
-/* line 160, ../scss/sass/_loadingscreen.scss */
+/* line 159, ../scss/sass/_loadingscreen.scss */
 #loadscreen-wrapper #loadscreen svg {
   width: 7em;
   position: relative;
   top: 7em;
   left: 1.5em;
+}
+/* line 167, ../scss/sass/_loadingscreen.scss */
+#loadscreen-wrapper #loadscreen.closing {
+  -webkit-animation-delay: 0;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-name: slide-up;
+  -webkit-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -moz-animation-delay: 0;
+  -moz-animation-duration: 3s;
+  -moz-animation-name: slide-up;
+  -moz-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -o-animation-delay: 0;
+  -o-animation-duration: 3s;
+  -o-animation-name: slide-up;
+  -o-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  animation-delay: 0;
+  animation-duration: 3s;
+  animation-name: slide-up;
+  animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+}
+/* line 171, ../scss/sass/_loadingscreen.scss */
+#loadscreen-wrapper #loadscreen.closed {
+  display: none;
 }
 
 /* line 9, ../scss/sass/main.scss */
@@ -695,7 +667,7 @@ body #body-background {
   left: 0;
   right: 0;
   z-index: 1;
-  background-image: url(/images/bg1.jpg);
+  background-image: url(/images/bg3.jpg);
   background-size: cover;
   -webkit-filter: blur(2px);
   -moz-filter: blur(2px);
@@ -723,7 +695,7 @@ body #body-wrapper .organic_search {
   transition: all 500ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
 }
 /* line 45, ../scss/sass/main.scss */
-body #body-wrapper .organic_search .organic_search_control {
+body #body-wrapper .organic_search_control {
   color: white;
   position: fixed;
   height: 50px;
@@ -736,14 +708,14 @@ body #body-wrapper .organic_search .organic_search_control {
   background-color: #F44336;
 }
 /* line 56, ../scss/sass/main.scss */
-body #body-wrapper .organic_search .organic_search_control i {
+body #body-wrapper .organic_search_control i {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 /* line 64, ../scss/sass/main.scss */
-body #body-wrapper .organic_search .organic_search_form {
+body #body-wrapper .organic_search_form {
   display: none;
   width: 80%;
   height: 160px;
@@ -755,7 +727,7 @@ body #body-wrapper .organic_search .organic_search_form {
   transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 }
 /* line 75, ../scss/sass/main.scss */
-body #body-wrapper .organic_search .organic_search_form .organic_search_input {
+body #body-wrapper .organic_search_form_input {
   width: 100%;
   height: 100%;
   padding: 0;
@@ -766,7 +738,7 @@ body #body-wrapper .organic_search .organic_search_form .organic_search_input {
   color: #EC5A62;
   transition: font-size 500ms cubic-bezier(0.7, 0, 0.3, 1) 0s;
 }
-/* line 91, ../scss/sass/main.scss */
+/* line 89, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.open {
   background: #F1F1F1 none repeat scroll 0% 0%;
   width: 100%;
@@ -775,7 +747,7 @@ body #body-wrapper .organic_search.open {
   right: 0px;
   border-radius: 0%;
 }
-/* line 99, ../scss/sass/main.scss */
+/* line 97, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.open .organic_search_control {
   color: black;
   width: 50px;
@@ -784,61 +756,91 @@ body #body-wrapper .organic_search.open .organic_search_control {
   right: 20px;
   transition: all 500ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
 }
-/* line 108, ../scss/sass/main.scss */
+/* line 106, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.open .organic_search_form {
   display: block;
 }
-/* line 120, ../scss/sass/main.scss */
+/* line 112, ../scss/sass/main.scss */
+body #body-wrapper .organic_search.start .organic_search_control {
+  top: 50%;
+  right: 50%;
+  transform: translate(-100px, -50%);
+  cursor: default;
+}
+/* line 118, ../scss/sass/main.scss */
+body #body-wrapper .organic_search.start .organic_search_form {
+  display: block;
+  height: 50px;
+  width: 300px;
+  top: 50%;
+  position: fixed;
+  right: 50%;
+  font-size: 9px;
+  transform: translate(70%, -50%);
+}
+/* line 127, ../scss/sass/main.scss */
+body #body-wrapper .organic_search.start .organic_search_form_input {
+  border-bottom: 1px solid;
+}
+/* line 136, ../scss/sass/main.scss */
+body #body-wrapper main {
+  transition: opacity 500ms;
+}
+/* line 139, ../scss/sass/main.scss */
+body #body-wrapper main.start {
+  opacity: 0;
+}
+/* line 147, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .ct-series-a .ct-line,
 body #body-wrapper main .weather-wrapper .ct-series-a .ct-point {
   stroke: blue;
 }
-/* line 125, ../scss/sass/main.scss */
+/* line 152, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .ct-series-b .ct-line,
 body #body-wrapper main .weather-wrapper .ct-series-b .ct-point {
   stroke: green;
 }
-/* line 135, ../scss/sass/main.scss */
+/* line 162, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-intro {
   overflow: hidden;
 }
-/* line 139, ../scss/sass/main.scss */
+/* line 166, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content-wrapper {
   padding-top: 50px;
   overflow: hidden;
 }
-/* line 143, ../scss/sass/main.scss */
+/* line 170, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content-wrapper .card {
   background-color: rgba(255, 255, 255, 0.9) !important;
 }
-/* line 149, ../scss/sass/main.scss */
+/* line 176, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content-wrapper .weather-types .type-weather {
   display: block;
   margin: auto;
   margin-top: 20px;
 }
-/* line 157, ../scss/sass/main.scss */
+/* line 184, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content-wrapper .weather-options .weather-option {
   display: block;
   margin: auto;
   margin-top: 20px;
 }
-/* line 167, ../scss/sass/main.scss */
+/* line 194, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .city-name-wrapper {
   text-align: center;
   color: #122b40;
   font-size: 7em;
 }
-/* line 173, ../scss/sass/main.scss */
+/* line 200, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-temperature-wrapper {
   text-align: center;
 }
-/* line 180, ../scss/sass/main.scss */
+/* line 207, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper #temperature {
   color: #122b40;
   font-size: 6em;
 }
-/* line 185, ../scss/sass/main.scss */
+/* line 212, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper small {
   color: #122b40;
   font-size: 0.50em;

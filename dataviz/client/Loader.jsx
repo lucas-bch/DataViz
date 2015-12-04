@@ -18,6 +18,11 @@ Loader = React.createClass({
 
     // Ajoute la classe closing
     close:function(){
+        this.setState({class: "closing"});
+        setTimeout(this.end_close,3000);
+    },
+
+    end_close:function(){
         this.setState({class: "closed"});
     },
 

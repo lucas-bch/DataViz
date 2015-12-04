@@ -128,17 +128,16 @@ $color_bg : #0078CA;
 
 
 #loadscreen-wrapper{
-  z-index: 2000;
   position:fixed;
   text-align:center;
   height: 100%;
   width: 100%;
 
-  #loadscreen.closed{
-    @include animation(0,3s,slide-up);
-  }
+
 
   #loadscreen{
+    display: block;
+    z-index: 2000;
     @include animation(0,1s,slide-down);
     transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1) 0.3s;
     position:fixed;
@@ -163,6 +162,14 @@ $color_bg : #0078CA;
       top: 7em;
       left: 1.5em;
     }
+
+  }
+  #loadscreen.closing{
+    @include animation(0,3s,slide-up);
+  }
+
+  #loadscreen.closed{
+    display: none;
   }
 
 
