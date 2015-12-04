@@ -12,9 +12,9 @@ OrganicSearch = React.createClass({
         e.preventDefault();
         var cityName = e.target.firstChild.value;
         this.props.searchHandler(cityName);
-        if(this.state.isOpened)
+        if (this.state.isOpened)
             this.setState({openClass: '', buttonName: 'search', isOpened: false});
-    ,
+    },
 
     handleControl: function(e) {
         e.preventDefault();
