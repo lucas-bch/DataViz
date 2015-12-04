@@ -8,13 +8,20 @@ OrganicSearch = React.createClass({
         };
     },
 
+    search: function(e) {
+        e.preventDefault();
+        var cityName = e.target.firstChild.value;
+        this.props.searchHandler(cityName);
+        if (this.state.isOpened)
+            this.setState({openClass: '', buttonName: 'search', isOpened: false});
+    },
+
     handleControl: function(e) {
         e.preventDefault();
-        if(this.state.isOpened) {
+        if(this.state.isOpened)
             this.setState({openClass: '', buttonName: 'search', isOpened: false});
-        } else {
+        else
             this.setState({openClass: 'open', buttonName: 'close', isOpened: true});
-        }
     },
 
     render: function() {
@@ -23,7 +30,7 @@ OrganicSearch = React.createClass({
                 <a href="#" className="organic_search_control btn-floating btn-large" onClick={ this.handleControl }>
                     <i className="small material-icons">{ this.state.buttonName }</i>
                 </a>
-                <form className="organic_search_form">
+                <form className="organic_search_form" onSubmit={ this.search }>
                     <input className="organic_search_input" placeholder="Search ..."></input>
                 </form>
             </div>
