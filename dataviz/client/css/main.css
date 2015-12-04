@@ -667,7 +667,7 @@ body #body-background {
   left: 0;
   right: 0;
   z-index: 1;
-  background-image: url(/images/bg3.jpg);
+  background-image: url(/images/bg1.jpg);
   background-size: cover;
   -webkit-filter: blur(2px);
   -moz-filter: blur(2px);
