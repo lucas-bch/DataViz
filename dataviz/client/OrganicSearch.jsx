@@ -29,7 +29,7 @@ OrganicSearch = React.createClass({
                 <a href="#" className="organic_search_control btn-floating btn-large" onClick={ this.handleControl }>
                     <i className="small material-icons">{ this.state.buttonName }</i>
                 </a>
-                <form className="organic_search_form" onsubmit={ this.search }>
+                <form className="organic_search_form" onSubmit={ this.search }>
                     <input className="organic_search_input" placeholder="Search ..."></input>
                 </form>
             </div>
