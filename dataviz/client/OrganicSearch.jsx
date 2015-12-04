@@ -1,8 +1,9 @@
 OrganicSearch = React.createClass({
 
     getInitialState: function() {
+        var scenarioState = this.props.scenarioState;
         return {
-            openClass: '',
+            openClass: scenarioState,
             buttonName: 'search',
             isOpened: false
         };
@@ -12,8 +13,7 @@ OrganicSearch = React.createClass({
         e.preventDefault();
         var cityName = e.target.firstChild.value;
         this.props.searchHandler(cityName);
-        if (this.state.isOpened)
-            this.setState({openClass: '', buttonName: 'search', isOpened: false});
+        this.setState({openClass: '', buttonName: 'search', isOpened: false});
     },
 
     handleControl: function(e) {
@@ -31,7 +31,7 @@ OrganicSearch = React.createClass({
                     <i className="small material-icons">{ this.state.buttonName }</i>
                 </a>
                 <form className="organic_search_form" onSubmit={ this.search }>
-                    <input className="organic_search_input" placeholder="Search ..."></input>
+                    <input className="organic_search_form_input" placeholder="Search ..."></input>
                 </form>
             </div>
         );

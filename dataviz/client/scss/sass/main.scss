@@ -28,7 +28,7 @@ body {
     z-index: 2;
 
     //Close
-    .organic_search{
+    .organic_search {
         height: 50px;
         width: 50px;
         position: fixed;
@@ -40,7 +40,7 @@ body {
         transform-origin: 100% 0px 0px;
         transition: all $transition_duration cubic-bezier(0.7, 0, 0.3, 1) 0ms;
 
-      .organic_search_control {
+      &_control {
             color: white;
             position: fixed;
             height: 50px;
@@ -59,7 +59,7 @@ body {
             }
       }
 
-      .organic_search_form {
+      &_form {
         display: none;
         width: 80%;
         height: 160px;
@@ -70,7 +70,7 @@ body {
         transition-duration: $transition_duration;
         transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 
-        .organic_search_input{
+        &_input{
           width: 100%;
           height: 100%;
           padding: 0;
@@ -83,10 +83,8 @@ body {
         }
       }
 
-    }
 
-    // Open
-    .organic_search.open{
+      &.open{
         background: #F1F1F1 none repeat scroll 0% 0%;
         width: 100%;
         height: 100%;
@@ -94,22 +92,50 @@ body {
         right: 0px;
         border-radius: 0%;
 
-      .organic_search_control {
-            color: black;
-            width: 50px;
-            height: 50px;
-            top: 20px;
-            right: 20px;
-            transition: all $transition_duration cubic-bezier(0.7, 0, 0.3, 1) 0ms;
+        .organic_search_control {
+          color: black;
+          width: 50px;
+          height: 50px;
+          top: 20px;
+          right: 20px;
+          transition: all $transition_duration cubic-bezier(0.7, 0, 0.3, 1) 0ms;
+        }
+
+        .organic_search_form {
+          display: block;
+        }
       }
 
-      .organic_search_form {
-        display: block;
+      &.start {
+        .organic_search_control {
+          top: 50%;
+          right: 50%;
+          transform: translate(-100px, -50%);
+        }
+        .organic_search_form {
+          display: block;
+          height: 50px;
+          width: 300px;
+          top: 50%;
+          position: fixed;
+          right: 50%;
+          font-size: 9px;
+          transform: translate(70%, -50%);
+          &_input {
+            border-bottom: 1px solid;
+          }
+        }
+
       }
     }
 
 
     main{
+      transition: opacity 500ms;
+
+      &.start {
+        opacity: 0;
+      }
 
       // Weather
       .weather-wrapper{
