@@ -5,16 +5,22 @@ OrganicSearch = React.createClass({
         return {
             openClass: scenarioState,
             buttonName: 'search',
-            isOpened: false
+            isOpened: false,
+            cities: []
         };
     },
 
-    search: function(e) {
-        e.preventDefault();
+    searchHandler: function(e) {
         var cityName = e.target.firstChild.value;
-        this.props.searchHandler(cityName);
+        this.search(e,cityName);
+    },
+
+    search: function(e,name) {
+        this.props.searchHandler(e,name);
         this.setState({openClass: '', buttonName: 'search', isOpened: false});
     },
+
+
 
     handleControl: function(e) {
         e.preventDefault();
@@ -28,14 +34,32 @@ OrganicSearch = React.createClass({
 
     handleKeyPress: function(e) {
         var inputString = e.target.value.toLowerCase();
-        if(inputString.length >= 2) {
-            $.get('/json/ville.json', function(result) {
+
+        if (inputString.length>0){
+            $.get('/json/liste_villes.json', function(result) {
                 if (this.isMounted()) {
 
                     var currentSearch = result.villes.filter(function(x) {
-                        console.log(x);
-                        return x.toLowerCase().indexOf(inputString) > -1;
+                        return x.toLowerCase().indexOf(inputString)>-1;
                     });
+
+                    currentSearch.sort(
+                        function compare(a, b) {
+                            var indexeA = a.toLowerCase().indexOf(inputString);
+                            var indexeB = b.toLowerCase().indexOf(inputString);
+
+                            if (indexeA>indexeB){
+                                return -1;
+                            }
+
+                            if (indexeA<indexeB){
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    );
+
+                    currentSearch.splice(0,currentSearch.length-6);
 
                     this.setState({
                         cities: currentSearch
@@ -43,52 +67,70 @@ OrganicSearch = React.createClass({
                 }
             }.bind(this));
         }
+
     },
 
     render: function() {
         return (
             <div className={'organic_search ' + this.state.openClass}>
-                <a href="#" className="organic_search_control btn-floating btn-large" onClick={ this.handleControl }>
+                <a href="#" className="organic_search_control red lighten-1 btn-floating btn-large" onClick={ this.handleControl }>
                     <i className="small material-icons">{ this.state.buttonName }</i>
                 </a>
                 <div className="container">
-                    <form className="organic_search_form" onSubmit={ this.search }>
-                        <input className="organic_search_form_input" placeholder="Search ..."></input>
+                    <form className="organic_search_form" onSubmit={ this.searchHandler }>
+                        <input className="organic_search_form_input" placeholder="Search ..." onChange={this.handleKeyPress}></input>
                     </form>
-                    <div className="organic_search_content">
-                        <div className="row">
-                            <div className="col s12 m6 l6 ">
-                                <div className="card-panel grey lighten-5 z-depth-1">
-                                    <div className="valign-wrapper">
-                                        <div className="col s2">
-                                            <img src="/images/city.jpg" className="circle responsive-img"/>
-                                        </div>
-                                        <div className="col s10">
-                                            <div className="city"><strong>Paris</strong> (FR)</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div className="row">
+                        <div className="organic_search_content">
+                            <Cities close={this.search} cities={this.state.cities} />
                         </div>
                     </div>
                 </div>
-
             </div>
         );
-  }
+    }
 });
 
 Cities = React.createClass({
     render: function() {
 
         var rows = [];
+        var root = this ;
         // iterate cities and build liste of jsx city
-        this.props.cities.forEach(function(element, index){
-            rows.push(<p key={index}>{element}</p>);
-        });
-
+        if(this.props.cities.length == 0){
+            rows.push(<City img="warning.png" close={root.props.close} name="Aucun résultat"/>);
+        }else{
+            this.props.cities.forEach(function(element, index){
+                rows.push(<City img="city.jpg" key={index} close={root.props.close} name={element}/>);
+            });
+        }
         return (
             <div key={rows}>{rows}</div>
+        );
+
+    }
+});
+
+City = React.createClass({
+
+    handleSelectCity: function(e){
+        this.props.close(e,this.props.name);
+    },
+
+    render: function() {
+        return (
+            <div className="col s12 m6 l6 ">
+                <div className="card-panel  red lighten-1  z-depth-1">
+                    <div className="valign-wrapper">
+                        <div className="col s2">
+                            <img src={"/images/" + this.props.img} className="circle responsive-img"/>
+                        </div>
+                        <div className="col s10">
+                            <div onClick={ this.handleSelectCity } data="" className="city"><strong>{this.props.name}</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         );
     }
 });

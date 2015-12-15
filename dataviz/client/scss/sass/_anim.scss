@@ -22,19 +22,19 @@
 
 
 #city{
-  @include animation(0s,2s,rise);
+  @include animation(0s,4s,rise);
 }
 
 #temperature{
-  @include animation(0s,3s,rise);
+  @include animation(0s,5s,rise);
 }
 
   // Central part
 .weather-content{
   overflow: hidden;
-  @include animation(0s,4s,rise);
+  @include animation(0s,6s,rise);
 }
 
 #body-background{
-  @include animation(0s,4s,fade);
+  @include animation(0s,6s,fade);
 }

@@ -1,5 +1,6 @@
 App = React.createClass({
-    search: function(seachedCity) {
+    search: function(e,seachedCity) {
+        e.preventDefault();
         this.setState({city: seachedCity, scenarioState: ''});
     },
 
