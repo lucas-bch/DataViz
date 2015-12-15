@@ -26,6 +26,25 @@ OrganicSearch = React.createClass({
         }
     },
 
+    handleKeyPress: function(e) {
+        var inputString = e.target.value.toLowerCase();
+        if(inputString.length >= 2) {
+            $.get('/json/ville.json', function(result) {
+                if (this.isMounted()) {
+
+                    var currentSearch = result.villes.filter(function(x) {
+                        console.log(x);
+                        return x.toLowerCase().indexOf(inputString) > -1;
+                    });
+
+                    this.setState({
+                        cities: currentSearch
+                    });
+                }
+            }.bind(this));
+        }
+    },
+
     render: function() {
         return (
             <div className={'organic_search ' + this.state.openClass}>
@@ -57,4 +76,19 @@ OrganicSearch = React.createClass({
             </div>
         );
   }
+});
+
+Cities = React.createClass({
+    render: function() {
+
+        var rows = [];
+        // iterate cities and build liste of jsx city
+        this.props.cities.forEach(function(element, index){
+            rows.push(<p> { element } </p>);
+        });
+
+        return (
+            <div> { rows }</div>
+        );
+    }
 });
