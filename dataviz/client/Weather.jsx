@@ -93,6 +93,7 @@ Weather = React.createClass({
         $.get('/json/toulouse-5days.json', function(result) {
             if (this.isMounted()) {
                 result.list.forEach(function(element, index){
+                    // convertion de température
                     element.main.temp = (element.main.temp - 273).toFixed(1);
                 });
                 this.setState({

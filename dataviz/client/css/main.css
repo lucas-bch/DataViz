@@ -695,6 +695,27 @@ body #body-wrapper .organic_search {
   transition: all 500ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
 }
 /* line 45, ../scss/sass/main.scss */
+body #body-wrapper .organic_search_content {
+  margin-top: 4.5em;
+}
+/* line 48, ../scss/sass/main.scss */
+body #body-wrapper .organic_search_content .card-panel {
+  cursor: pointer;
+}
+/* line 50, ../scss/sass/main.scss */
+body #body-wrapper .organic_search_content .card-panel .city {
+  font-size: 2em;
+  font-weight: 700;
+}
+/* line 53, ../scss/sass/main.scss */
+body #body-wrapper .organic_search_content .card-panel .city strong {
+  color: #EC5A62;
+}
+/* line 58, ../scss/sass/main.scss */
+body #body-wrapper .organic_search_content .card-panel:hover {
+  box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.16), 0px 6px 30px 0px rgba(0, 0, 0, 0.12);
+}
+/* line 66, ../scss/sass/main.scss */
 body #body-wrapper .organic_search_control {
   color: white;
   position: fixed;
@@ -707,17 +728,16 @@ body #body-wrapper .organic_search_control {
   transition: all 500ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
   background-color: #F44336;
 }
-/* line 56, ../scss/sass/main.scss */
+/* line 77, ../scss/sass/main.scss */
 body #body-wrapper .organic_search_control i {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-/* line 64, ../scss/sass/main.scss */
+/* line 85, ../scss/sass/main.scss */
 body #body-wrapper .organic_search_form {
   display: none;
-  width: 80%;
   height: 160px;
   margin: 0px auto;
   transform: translate3d(0px, 3em, 0px);
@@ -726,7 +746,7 @@ body #body-wrapper .organic_search_form {
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 }
-/* line 75, ../scss/sass/main.scss */
+/* line 95, ../scss/sass/main.scss */
 body #body-wrapper .organic_search_form_input {
   width: 100%;
   height: 100%;
@@ -738,7 +758,7 @@ body #body-wrapper .organic_search_form_input {
   color: #EC5A62;
   transition: font-size 500ms cubic-bezier(0.7, 0, 0.3, 1) 0s;
 }
-/* line 89, ../scss/sass/main.scss */
+/* line 109, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.open {
   background: #F1F1F1 none repeat scroll 0% 0%;
   width: 100%;
@@ -747,7 +767,7 @@ body #body-wrapper .organic_search.open {
   right: 0px;
   border-radius: 0%;
 }
-/* line 97, ../scss/sass/main.scss */
+/* line 117, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.open .organic_search_control {
   color: black;
   width: 50px;
@@ -756,18 +776,18 @@ body #body-wrapper .organic_search.open .organic_search_control {
   right: 20px;
   transition: all 500ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
 }
-/* line 106, ../scss/sass/main.scss */
+/* line 126, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.open .organic_search_form {
   display: block;
 }
-/* line 112, ../scss/sass/main.scss */
+/* line 132, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.start .organic_search_control {
   top: 50%;
   right: 50%;
   transform: translate(-100px, -50%);
   cursor: default;
 }
-/* line 118, ../scss/sass/main.scss */
+/* line 138, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.start .organic_search_form {
   display: block;
   height: 50px;
@@ -778,69 +798,69 @@ body #body-wrapper .organic_search.start .organic_search_form {
   font-size: 9px;
   transform: translate(70%, -50%);
 }
-/* line 127, ../scss/sass/main.scss */
+/* line 147, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.start .organic_search_form_input {
   border-bottom: 1px solid;
 }
-/* line 136, ../scss/sass/main.scss */
+/* line 156, ../scss/sass/main.scss */
 body #body-wrapper main {
   transition: opacity 500ms;
 }
-/* line 139, ../scss/sass/main.scss */
+/* line 159, ../scss/sass/main.scss */
 body #body-wrapper main.start {
   opacity: 0;
 }
-/* line 147, ../scss/sass/main.scss */
+/* line 167, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .ct-series-a .ct-line,
 body #body-wrapper main .weather-wrapper .ct-series-a .ct-point {
   stroke: blue;
 }
-/* line 152, ../scss/sass/main.scss */
+/* line 172, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .ct-series-b .ct-line,
 body #body-wrapper main .weather-wrapper .ct-series-b .ct-point {
   stroke: green;
 }
-/* line 162, ../scss/sass/main.scss */
+/* line 182, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-intro {
   overflow: hidden;
 }
-/* line 166, ../scss/sass/main.scss */
+/* line 186, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content-wrapper {
   padding-top: 50px;
   overflow: hidden;
 }
-/* line 170, ../scss/sass/main.scss */
+/* line 190, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content-wrapper .card {
   background-color: rgba(255, 255, 255, 0.9) !important;
 }
-/* line 176, ../scss/sass/main.scss */
+/* line 196, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content-wrapper .weather-types .type-weather {
   display: block;
   margin: auto;
   margin-top: 20px;
 }
-/* line 184, ../scss/sass/main.scss */
+/* line 204, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content-wrapper .weather-options .weather-option {
   display: block;
   margin: auto;
   margin-top: 20px;
 }
-/* line 194, ../scss/sass/main.scss */
+/* line 214, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .city-name-wrapper {
   text-align: center;
   color: #122b40;
   font-size: 7em;
 }
-/* line 200, ../scss/sass/main.scss */
+/* line 220, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-temperature-wrapper {
   text-align: center;
 }
-/* line 207, ../scss/sass/main.scss */
+/* line 227, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper #temperature {
   color: #122b40;
   font-size: 6em;
 }
-/* line 212, ../scss/sass/main.scss */
+/* line 232, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper small {
   color: #122b40;
   font-size: 0.50em;

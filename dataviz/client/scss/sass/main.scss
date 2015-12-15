@@ -42,6 +42,27 @@ body {
         transform-origin: 100% 0px 0px;
         transition: all $transition_duration cubic-bezier(0.7, 0, 0.3, 1) 0ms;
 
+      &_content {
+        margin-top: 4.5em;
+
+        .card-panel{
+          cursor: pointer;
+          .city{
+            font-size: 2em;
+            font-weight: 700;
+            strong{
+              color: #EC5A62;
+            }
+          }
+        }
+        .card-panel:hover {
+          box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.16), 0px 6px 30px 0px rgba(0, 0, 0, 0.12);
+        }
+
+
+
+      }
+
       &_control {
             color: white;
             position: fixed;
@@ -63,7 +84,6 @@ body {
 
       &_form {
         display: none;
-        width: 80%;
         height: 160px;
         margin: 0px auto;
         transform: translate3d(0px, 3em, 0px);
