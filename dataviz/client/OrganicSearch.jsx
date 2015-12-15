@@ -67,11 +67,11 @@ Cities = React.createClass({
         var rows = [];
         // iterate cities and build liste of jsx city
         this.props.cities.forEach(function(element, index){
-            rows.push(<p> { element } </p>);
+            rows.push(<p key={index}>{element}</p>);
         });
 
         return (
-            <div> { rows }</div>
+            <div key={rows}>{rows}</div>
         );
     }
 });
