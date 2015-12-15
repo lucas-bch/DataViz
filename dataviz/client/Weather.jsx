@@ -155,7 +155,6 @@ Weather = React.createClass({
     }
 });
 
-
 // My Chart
 var WeatherGraph = (function(){
 
