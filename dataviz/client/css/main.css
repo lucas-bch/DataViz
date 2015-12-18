@@ -404,31 +404,7 @@ h1 small {
   /* this prevents the animation from restarting! */
 }
 
-/* line 38, ../scss/sass/_anim.scss */
-#body-background {
-  -webkit-animation-delay: 0s;
-  -webkit-animation-duration: 6s;
-  -webkit-animation-name: fade;
-  -webkit-animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */
-  -moz-animation-delay: 0s;
-  -moz-animation-duration: 6s;
-  -moz-animation-name: fade;
-  -moz-animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */
-  -o-animation-delay: 0s;
-  -o-animation-duration: 6s;
-  -o-animation-name: fade;
-  -o-animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */
-  animation-delay: 0s;
-  animation-duration: 6s;
-  animation-name: fade;
-  animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */
-}
-
-/* line 7, ../scss/sass/_loadingscreen.scss */
+/* line 8, ../scss/sass/_loadingscreen.scss */
 .cloud {
   position: absolute;
   z-index: 1;
@@ -442,7 +418,7 @@ h1 small {
   box-shadow: -2.1875em 0.6875em 0 -0.6875em #0078CA, 2.0625em 0.9375em 0 -0.9375em #0078CA, 0 0 0 0.375em #fff, -2.1875em 0.6875em 0 -0.3125em #fff, 2.0625em 0.9375em 0 -0.5625em #fff;
 }
 
-/* line 25, ../scss/sass/_loadingscreen.scss */
+/* line 26, ../scss/sass/_loadingscreen.scss */
 .cloud:after {
   content: '';
   position: absolute;
@@ -455,7 +431,7 @@ h1 small {
   box-shadow: 0 0.4375em 0 -0.0625em #fff;
 }
 
-/* line 36, ../scss/sass/_loadingscreen.scss */
+/* line 37, ../scss/sass/_loadingscreen.scss */
 .cloud:nth-child(2) {
   z-index: 0;
   background: #fff;
@@ -465,12 +441,12 @@ h1 small {
   animation: cloud 4s linear infinite;
 }
 
-/* line 49, ../scss/sass/_loadingscreen.scss */
+/* line 50, ../scss/sass/_loadingscreen.scss */
 .cloud:nth-child(2):after {
   background: #fff;
 }
 
-/* line 51, ../scss/sass/_loadingscreen.scss */
+/* line 52, ../scss/sass/_loadingscreen.scss */
 .sun {
   position: absolute;
   top: 50%;
@@ -484,7 +460,7 @@ h1 small {
   animation: spin 12s infinite linear;
 }
 
-/* line 63, ../scss/sass/_loadingscreen.scss */
+/* line 64, ../scss/sass/_loadingscreen.scss */
 .rays {
   position: absolute;
   top: -2em;
@@ -498,7 +474,7 @@ h1 small {
   box-shadow: 0 5.375em #fff;
 }
 
-/* line 75, ../scss/sass/_loadingscreen.scss */
+/* line 76, ../scss/sass/_loadingscreen.scss */
 .rays:before,
 .rays:after {
   content: '';
@@ -515,17 +491,17 @@ h1 small {
   box-shadow: 0 5.375em #fff;
 }
 
-/* line 90, ../scss/sass/_loadingscreen.scss */
+/* line 91, ../scss/sass/_loadingscreen.scss */
 .rays:before {
   transform: rotate(120deg);
 }
 
-/* line 93, ../scss/sass/_loadingscreen.scss */
+/* line 94, ../scss/sass/_loadingscreen.scss */
 .cloud + .sun {
   margin: -2em 1em;
 }
 
-/* line 97, ../scss/sass/_loadingscreen.scss */
+/* line 98, ../scss/sass/_loadingscreen.scss */
 .rain,
 .snow {
   position: absolute;
@@ -538,7 +514,7 @@ h1 small {
   background: #0078CA;
 }
 
-/* line 109, ../scss/sass/_loadingscreen.scss */
+/* line 110, ../scss/sass/_loadingscreen.scss */
 .rain:after {
   content: '';
   position: absolute;
@@ -555,14 +531,14 @@ h1 small {
   animation: rain 3s linear infinite;
 }
 
-/* line 130, ../scss/sass/_loadingscreen.scss */
+/* line 131, ../scss/sass/_loadingscreen.scss */
 #loadscreen-wrapper {
   position: fixed;
   text-align: center;
   height: 100%;
   width: 100%;
 }
-/* line 138, ../scss/sass/_loadingscreen.scss */
+/* line 139, ../scss/sass/_loadingscreen.scss */
 #loadscreen-wrapper #loadscreen {
   display: block;
   z-index: 2000;
@@ -593,7 +569,7 @@ h1 small {
   width: 100%;
   background: #0078CA;
 }
-/* line 148, ../scss/sass/_loadingscreen.scss */
+/* line 149, ../scss/sass/_loadingscreen.scss */
 #loadscreen-wrapper #loadscreen .icon {
   -webkit-animation-delay: 0;
   -webkit-animation-duration: 3s;
@@ -623,14 +599,14 @@ h1 small {
   font-size: 1em;
   /* control icon size here */
 }
-/* line 159, ../scss/sass/_loadingscreen.scss */
+/* line 160, ../scss/sass/_loadingscreen.scss */
 #loadscreen-wrapper #loadscreen svg {
   width: 7em;
   position: relative;
   top: 7em;
   left: 1.5em;
 }
-/* line 167, ../scss/sass/_loadingscreen.scss */
+/* line 168, ../scss/sass/_loadingscreen.scss */
 #loadscreen-wrapper #loadscreen.closing {
   -webkit-animation-delay: 0;
   -webkit-animation-duration: 3s;
@@ -653,35 +629,25 @@ h1 small {
   animation-fill-mode: forwards;
   /* this prevents the animation from restarting! */
 }
-/* line 171, ../scss/sass/_loadingscreen.scss */
+/* line 172, ../scss/sass/_loadingscreen.scss */
 #loadscreen-wrapper #loadscreen.closed {
   display: none;
 }
 
-/* line 9, ../scss/sass/main.scss */
+/* line 10, ../scss/sass/main.scss */
 body #body-background {
-  opacity: 0;
   position: absolute;
-  height: 100%;
+  background: #F1F1F1 none repeat scroll 0% 0%;
   width: 100%;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  background-image: url(/images/bg1.jpg);
-  background-size: cover;
-  -webkit-filter: blur(2px);
-  -moz-filter: blur(2px);
-  -o-filter: blur(2px);
-  -ms-filter: blur(2px);
-  filter: blur(2px);
+  height: 100%;
 }
-/* line 27, ../scss/sass/main.scss */
+/* line 17, ../scss/sass/main.scss */
 body #body-wrapper {
   position: absolute;
   width: 100%;
   z-index: 2;
 }
-/* line 33, ../scss/sass/main.scss */
+/* line 23, ../scss/sass/main.scss */
 body #body-wrapper .organic_search {
   height: 50px;
   width: 50px;
@@ -694,27 +660,27 @@ body #body-wrapper .organic_search {
   transform-origin: 100% 0px 0px;
   transition: all 500ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
 }
-/* line 45, ../scss/sass/main.scss */
+/* line 35, ../scss/sass/main.scss */
 body #body-wrapper .organic_search_content {
   margin-top: 4.5em;
 }
-/* line 48, ../scss/sass/main.scss */
+/* line 38, ../scss/sass/main.scss */
 body #body-wrapper .organic_search_content .card-panel {
   transition: all .4s ease 0s, color 0.4s ease 0s;
   cursor: pointer;
 }
-/* line 51, ../scss/sass/main.scss */
+/* line 41, ../scss/sass/main.scss */
 body #body-wrapper .organic_search_content .card-panel .city {
   color: white;
   font-size: 2em;
   font-weight: 700;
 }
-/* line 57, ../scss/sass/main.scss */
+/* line 47, ../scss/sass/main.scss */
 body #body-wrapper .organic_search_content .card-panel:hover {
-  background-color: #b53e39 !important;
+  background-color: #ef5350 !important;
   box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.16), 0px 6px 30px 0px rgba(0, 0, 0, 0.12);
 }
-/* line 63, ../scss/sass/main.scss */
+/* line 53, ../scss/sass/main.scss */
 body #body-wrapper .organic_search_control {
   color: white;
   position: fixed;
@@ -727,14 +693,14 @@ body #body-wrapper .organic_search_control {
   transition: all 500ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
   background-color: #ef5350;
 }
-/* line 74, ../scss/sass/main.scss */
+/* line 64, ../scss/sass/main.scss */
 body #body-wrapper .organic_search_control i {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-/* line 82, ../scss/sass/main.scss */
+/* line 72, ../scss/sass/main.scss */
 body #body-wrapper .organic_search_form {
   display: none;
   height: 160px;
@@ -745,7 +711,7 @@ body #body-wrapper .organic_search_form {
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 }
-/* line 92, ../scss/sass/main.scss */
+/* line 82, ../scss/sass/main.scss */
 body #body-wrapper .organic_search_form_input {
   width: 100%;
   height: 100%;
@@ -757,7 +723,7 @@ body #body-wrapper .organic_search_form_input {
   color: #ef5350;
   transition: font-size 500ms cubic-bezier(0.7, 0, 0.3, 1) 0s;
 }
-/* line 106, ../scss/sass/main.scss */
+/* line 96, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.open {
   background: #F1F1F1 none repeat scroll 0% 0%;
   width: 100%;
@@ -766,7 +732,7 @@ body #body-wrapper .organic_search.open {
   right: 0px;
   border-radius: 0%;
 }
-/* line 114, ../scss/sass/main.scss */
+/* line 104, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.open .organic_search_control {
   color: black;
   width: 50px;
@@ -775,18 +741,18 @@ body #body-wrapper .organic_search.open .organic_search_control {
   right: 20px;
   transition: all 500ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
 }
-/* line 123, ../scss/sass/main.scss */
+/* line 113, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.open .organic_search_form {
   display: block;
 }
-/* line 129, ../scss/sass/main.scss */
+/* line 119, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.start .organic_search_control {
   top: 50%;
   right: 50%;
   transform: translate(-100px, -50%);
   cursor: default;
 }
-/* line 135, ../scss/sass/main.scss */
+/* line 125, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.start .organic_search_form {
   display: block;
   height: 50px;
@@ -797,70 +763,88 @@ body #body-wrapper .organic_search.start .organic_search_form {
   font-size: 9px;
   transform: translate(70%, -50%);
 }
-/* line 144, ../scss/sass/main.scss */
+/* line 134, ../scss/sass/main.scss */
 body #body-wrapper .organic_search.start .organic_search_form_input {
   border-bottom: 1px solid;
 }
-/* line 153, ../scss/sass/main.scss */
+/* line 143, ../scss/sass/main.scss */
 body #body-wrapper main {
   transition: opacity 500ms;
 }
-/* line 156, ../scss/sass/main.scss */
+/* line 146, ../scss/sass/main.scss */
 body #body-wrapper main.start {
   opacity: 0;
 }
-/* line 164, ../scss/sass/main.scss */
+/* line 151, ../scss/sass/main.scss */
+body #body-wrapper main .weather-wrapper {
+  background-image: url(/images/bg1.jpg);
+  background-size: cover;
+  position: relative;
+}
+/* line 157, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .ct-series-a .ct-line,
 body #body-wrapper main .weather-wrapper .ct-series-a .ct-point {
   stroke: blue;
 }
-/* line 169, ../scss/sass/main.scss */
+/* line 162, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .ct-series-b .ct-line,
 body #body-wrapper main .weather-wrapper .ct-series-b .ct-point {
   stroke: green;
 }
-/* line 179, ../scss/sass/main.scss */
+/* line 167, ../scss/sass/main.scss */
+body #body-wrapper main .weather-wrapper .start {
+  background-image: url(/images/bg1.jpg);
+  background-size: cover;
+}
+/* line 175, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-intro {
   overflow: hidden;
 }
-/* line 183, ../scss/sass/main.scss */
+/* line 179, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content-wrapper {
-  padding-top: 50px;
   overflow: hidden;
 }
-/* line 187, ../scss/sass/main.scss */
+/* line 182, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content-wrapper .card {
   background-color: rgba(255, 255, 255, 0.9) !important;
 }
-/* line 193, ../scss/sass/main.scss */
+/* line 188, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content-wrapper .weather-types .type-weather {
   display: block;
   margin: auto;
   margin-top: 20px;
 }
-/* line 201, ../scss/sass/main.scss */
+/* line 196, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content-wrapper .weather-options .weather-option {
   display: block;
   margin: auto;
   margin-top: 20px;
 }
-/* line 211, ../scss/sass/main.scss */
+/* line 206, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .city-name-wrapper {
   text-align: center;
   color: #122b40;
   font-size: 7em;
 }
-/* line 217, ../scss/sass/main.scss */
+/* line 212, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-temperature-wrapper {
   text-align: center;
 }
-/* line 224, ../scss/sass/main.scss */
+/* line 217, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper #temperature {
   color: #122b40;
   font-size: 6em;
 }
-/* line 229, ../scss/sass/main.scss */
+/* line 222, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper small {
   color: #122b40;
   font-size: 0.50em;
+}
+/* line 232, ../scss/sass/main.scss */
+body #body-wrapper .historic-wrapper .historic-body .btn-floating {
+  top: -50px;
+}
+/* line 235, ../scss/sass/main.scss */
+body #body-wrapper .historic-wrapper .historic-body .tabs {
+  margin-bottom: 50px;
 }

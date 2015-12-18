@@ -1,27 +1,17 @@
 @import "base" ;
 @import "anim";
 @import "loadingscreen";
+@import "colors";
 
 $transition_duration: 500ms;
 
 body {
 
-  #body-background {
-    opacity: 0;
+  #body-background{
     position: absolute;
-    height: 100%;
+    background: $light_grey none repeat scroll 0% 0%;
     width: 100%;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    background-image: url(/images/bg1.jpg);
-    background-size: cover;
-    -webkit-filter: blur(2px);
-    -moz-filter: blur(2px);
-    -o-filter: blur(2px);
-    -ms-filter: blur(2px);
-    filter: blur(2px);
-
+    height: 100%;
   }
 
   #body-wrapper {
@@ -55,7 +45,7 @@ body {
           }
         }
         .card-panel:hover {
-          background-color: #b53e39 !important;
+          background-color: $secondary_color !important;
           box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.16), 0px 6px 30px 0px rgba(0, 0, 0, 0.12);
         }
       }
@@ -70,7 +60,7 @@ body {
             border-radius: 50%;
             text-align: center;
             transition: all $transition_duration cubic-bezier(0.7, 0, 0.3, 1) 0ms;
-            background-color: #ef5350 ;
+            background-color: $secondary_color ;
             i {
                 position: absolute;
                 top: 50%;
@@ -97,7 +87,7 @@ body {
           border: medium none;
           background: transparent none repeat scroll 0% 0%;
           font-size: 7em;
-          color: #ef5350;
+          color: $secondary_color;
           transition: font-size $transition_duration cubic-bezier(0.7, 0, 0.3, 1) 0s;
         }
       }
@@ -150,7 +140,7 @@ body {
     }
 
 
-    main{
+    main {
       transition: opacity 500ms;
 
       &.start {
@@ -158,8 +148,11 @@ body {
       }
 
       // Weather
-      .weather-wrapper{
+      .weather-wrapper {
 
+        background-image: url(/images/bg1.jpg);
+        background-size: cover;
+        position: relative;
 
         .ct-series-a .ct-line,
         .ct-series-a .ct-point {
@@ -171,35 +164,37 @@ body {
           stroke: green;
         }
 
-
+        .start {
+          background-image: url(/images/bg1.jpg);
+          background-size: cover;
+        }
 
         // Body
-        .weather-body{
+        .weather-body {
 
-          .weather-intro{
+          .weather-intro {
             overflow: hidden;
           }
 
-          .weather-content-wrapper{
-            padding-top: 50px;
+          .weather-content-wrapper {
             overflow: hidden;
 
-            .card{
-             background-color: rgba(255,255,255,0.9) !important;
+            .card {
+              background-color: rgba(255, 255, 255, 0.9) !important;
             }
 
-            .weather-types{
+            .weather-types {
 
-              .type-weather{
-                display:block;
+              .type-weather {
+                display: block;
                 margin: auto;
                 margin-top: 20px;
               }
             }
 
-            .weather-options{
-              .weather-option{
-                display:block;
+            .weather-options {
+              .weather-option {
+                display: block;
                 margin: auto;
                 margin-top: 20px;
               }
@@ -208,32 +203,40 @@ body {
           }
 
           // city name
-          .city-name-wrapper{
+          .city-name-wrapper {
             text-align: center;
             color: #122b40;
             font-size: 7em;
           }
 
-          .weather-temperature-wrapper{
+          .weather-temperature-wrapper {
             text-align: center;
           }
         }
 
-
-
-        #temperature{
+        #temperature {
           color: #122b40;
           font-size: 6em;
         }
 
-        small{
+        small {
           color: #122b40;
           font-size: 0.50em;
         }
 
       }
     }
-
+    // historic part
+    .historic-wrapper{
+      .historic-body{
+        .btn-floating{
+          top:-50px;
+        }
+        .tabs{
+          margin-bottom: 50px;
+        }
+      }
+    }
 
   }
 }

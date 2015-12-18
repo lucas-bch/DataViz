@@ -7,8 +7,22 @@ App = React.createClass({
     getInitialState: function() {
         return {
             city: 'Toulouse',
-            scenarioState: 'start'
+            scenarioState: 'start',
+            windowWidth: window.innerWidth,
+            windowHeight: window.innerHeight
         };
+    },
+
+    handleResize: function(e) {
+        this.setState({windowWidth: window.innerWidth,windowHeight: window.innerHeight});
+    },
+
+    componentDidMount: function() {
+        window.addEventListener('resize', this.handleResize);
+    },
+
+    componentWillUnmount: function() {
+        window.removeEventListener('resize', this.handleResize);
     },
 
     render: function() {
@@ -16,11 +30,15 @@ App = React.createClass({
             <div className="weather-cover">
                 <OrganicSearch searchHandler={ this.search } scenarioState={ this.state.scenarioState } />
                 <main className={ this.state.scenarioState }>
-                    <div className=" weather-wrapper">
+                    <div style={{height: this.state.windowHeight+ 'px',width: this.state.windowWidth+ 'px'}} className=" weather-wrapper">
                         <Weather city={ this.state.city } />
+                    </div>
+                    <div className="historic-wrapper">
+                        <Historic />
                     </div>
                 </main>
             </div>
+
         );
     }
 });

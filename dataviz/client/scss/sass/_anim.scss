@@ -34,7 +34,3 @@
   overflow: hidden;
   @include animation(0s,6s,rise);
 }
-
-#body-background{
-  @include animation(0s,6s,fade);
-}
