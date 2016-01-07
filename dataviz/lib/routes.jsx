@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/32792092/configuring-iron-router-in-meteor-reacts
