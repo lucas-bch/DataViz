@@ -1,3 +1,4 @@
+Meteor.subscribe('weather');
 App = React.createClass({
     search: function(e,seachedCity) {
         e.preventDefault();
@@ -26,6 +27,8 @@ App = React.createClass({
     },
 
     render: function() {
+        console.log("hey, we are rending app.jsx");
+        console.log(weather);
         return (
             <div className="weather-cover">
                 <OrganicSearch searchHandler={ this.search } scenarioState={ this.state.scenarioState } />

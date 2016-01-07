@@ -1,1 +1,6 @@
-http://stackoverflow.com/questions/32792092/configuring-iron-router-in-meteor-reacts
+FlowRouter.route('/', {
+    action: function(params, queryParams) {
+        console.log("Yeah! We are on the mainpage");
+       	//ReactLayout.render(App, {content: document.getElementById("body-wrapper")});
+    }
+});
