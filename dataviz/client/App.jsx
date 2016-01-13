@@ -1,7 +1,26 @@
 App = React.createClass({
-    search: function(e,seachedCity) {
+    search: function(e,searchedCity) {
         e.preventDefault();
-        this.setState({city: seachedCity, scenarioState: ''});
+        //get the previous city researched to remove subscription if it is a different one, or do nothing in minimongo if it is the same
+        var previousCity = this.state.city;
+
+        this.setState({city: searchedCity, scenarioState: ''});
+
+        if(previousCity != searchedCity){
+            console.log(previousCity);
+            Meteor.subscribe("weatherData", previousCity, {
+                onStop: function(){
+                    console.log("we unsubscribed from weatherData " + previousCity + ":) ");
+                }
+            }).stop();
+            Meteor.subscribe("weatherData", searchedCity, {
+                onReady: function(){
+                    console.log("we subscribed to weatherData " + searchedCity + " :) ");
+                }
+            });
+        } else {
+            console.log("Same city");
+        }
     },
 
     getInitialState: function() {
@@ -35,13 +54,7 @@ App = React.createClass({
     },
 
     render: function() {
-        console.log("hey, we are rending app.jsx");
-        //console.log(Weather);
-        Meteor.subscribe("weatherData", "Grenoble", {
-            onReady: function(){
-                console.log("we subscribed to weatherData Grenoble :)");
-            }
-        });
+        console.log("hey, we are rendering app.jsx");
         return (
             <div className="weather-cover">
                 <OrganicSearch searchHandler={ this.search } scenarioState={ this.state.scenarioState } />
