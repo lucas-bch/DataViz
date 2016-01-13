@@ -1,5 +1,7 @@
-- iron router
-- queries sur la ville
-- envoyer les 3 data : Hourly, Daily and Weekly.s
-- liste villes isère dans la bd
-- 
+-- Weather.find().fetch()[0].data[2].dt_txt -> renvoie une date
+
+TODO :
+-- Faire sélection avec les villes (subscribe("weatherData", cityname));
+-- WeatherData.jsx : accorder data avec ville courante
+-- Faire liste villes (?)
+-- 

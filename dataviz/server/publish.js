@@ -1,8 +1,10 @@
-Weather = new Mongo.Collection("weather");
-
 if (Meteor.isServer) {
-	Meteor.publish('Weather', function(){
+	Meteor.publish("weatherData", function(city) {
 		console.log("Here is the server !");
-		return Weather.find({"city.name": "Grenoble"});
-	})
+		var weatherData = Weather.find({"city.name": city});
+		if (weatherData) {
+			return weatherData;
+		}
+		return this.ready();
+	});
 }

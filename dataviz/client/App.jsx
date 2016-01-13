@@ -1,4 +1,3 @@
-Meteor.subscribe('weather');
 App = React.createClass({
     search: function(e,seachedCity) {
         e.preventDefault();
@@ -13,7 +12,16 @@ App = React.createClass({
             windowHeight: window.innerHeight
         };
     },
+    /*componentWillMount: function(){
+        Meteor.subscribe("weatherData", "Grenoble", {
+            onReady: function(){
 
+            }
+        });
+        console.log("we subscribed to weatherData Grenoble :)");
+        console.log(Meteor.subscribe("weatherData", "Grenoble").ready());
+    },*/
+    
     handleResize: function(e) {
         this.setState({windowWidth: window.innerWidth,windowHeight: window.innerHeight});
     },
@@ -28,13 +36,18 @@ App = React.createClass({
 
     render: function() {
         console.log("hey, we are rending app.jsx");
-        console.log(weather);
+        //console.log(Weather);
+        Meteor.subscribe("weatherData", "Grenoble", {
+            onReady: function(){
+                console.log("we subscribed to weatherData Grenoble :)");
+            }
+        });
         return (
             <div className="weather-cover">
                 <OrganicSearch searchHandler={ this.search } scenarioState={ this.state.scenarioState } />
                 <main className={ this.state.scenarioState }>
                     <div style={{height: this.state.windowHeight+ 'px',width: this.state.windowWidth+ 'px'}} className=" weather-wrapper">
-                        <Weather city={ this.state.city } />
+                        <WeatherData city={ this.state.city } />
                     </div>
                     <div className="historic-wrapper">
                         <Historic />

@@ -24,7 +24,7 @@ var options = {
 };
 
 
-Weather = React.createClass({
+WeatherData = React.createClass({
     propTypes: {
         city: React.PropTypes.string.isRequired
     },
