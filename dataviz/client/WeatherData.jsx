@@ -87,24 +87,22 @@ WeatherData = React.createClass({
     },
 
     componentDidMount : function(){
-                console.log(Session.get("city"));
-
         this.state.weather = new WeatherGraph(".ct-chart",options,data);
-        $.get('/json/toulouse-5days.json', function(result) {
-            if (this.isMounted()) {
-                result.data.forEach(function(element, index){
-                    // convertion de température
-                    element.main.temp = (element.main.temp - 273).toFixed(1);
-                });
-                this.setState({
-                    data: result.data
-                });
-            }
-        }.bind(this));
-
     },
     componentWillReceiveProps : function(nextProps) {
-        
+        console.log(nextProps.city);
+        console.log(Weather.find().fetch());
+        var result = Weather.find({"city.name": nextProps.city}).fetch();
+        console.log(result);
+        if (this.isMounted()) {
+            result.data.forEach(function(element, index){
+                // convertion de température
+                element.main.temp = (element.main.temp - 273).toFixed(1);
+            });
+            this.setState({
+                data: result.data
+            });
+        }
     },
 
     render : function(){

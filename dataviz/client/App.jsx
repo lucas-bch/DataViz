@@ -4,12 +4,19 @@ App = React.createClass({
 
         this.setState({city: searchedCity, scenarioState: ''});
 
-        Meteor.subscribe("weatherData", searchedCity, {
+        handle = Meteor.subscribe("weatherData", searchedCity, {
             onReady: function(){
                 console.log("we subscribed to weatherData " + searchedCity + " :) ");
             }
         });
-        Session.set("city", searchedCity);
+        if (handle.ready){
+            console.log("sub ready");
+        }
+        //document.getElementById("loadscreen-wrapper").open();
+        while(Weather.find({"city.name" : searchedCity}).fetch().length == 0){};
+
+        console.log(Weather.find().fetch());
+
     },
 
     getInitialState: function() {
@@ -32,7 +39,7 @@ App = React.createClass({
     componentWillUnmount: function() {
         window.removeEventListener('resize', this.handleResize);
     },
-
+    
     render: function() {
         console.log("hey, we are rendering app.jsx");
         console.log(this.state.city);
@@ -41,14 +48,13 @@ App = React.createClass({
                 <OrganicSearch searchHandler={ this.search } scenarioState={ this.state.scenarioState } />
                 <main className={ this.state.scenarioState }>
                     <div style={{height: this.state.windowHeight+ 'px',width: this.state.windowWidth+ 'px'}} className=" weather-wrapper">
-                        <WeatherData city={ this.state.city } />
+                        <WeatherData city={ this.state.city} />
                     </div>
                     <div className="historic-wrapper">
                         <Historic />
                     </div>
                 </main>
             </div>
-
         );
     }
 });

@@ -7,7 +7,7 @@ Loader = React.createClass({
 
     getInitialState: function() {
         return {
-            class: ""
+            class: "closed"
         };
     },
 
@@ -28,8 +28,8 @@ Loader = React.createClass({
 
     render: function() {
         return (
-        <div id="loadscreen" className={this.state.class}>
-            <div className="icon sun-shower" onClick={this.close}>
+        <div id="loadscreen" className={this.state.class} onClick={this.close}>
+            <div className="icon sun-shower">
                 <div className="cloud"></div>
                 <div className="sun">
                     <div className="rays"></div>
