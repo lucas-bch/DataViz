@@ -1,17 +1,20 @@
+var dataSub;
 App = React.createClass({
     search: function(e,searchedCity) {
         e.preventDefault();
 
-        this.setState({city: searchedCity, scenarioState: ''});
-
-        handle = Meteor.subscribe("weatherData", searchedCity, {
+        if (dataSub && (searchedCity != this.state.city)){
+            dataSub.stop();
+        }
+        dataSub = Meteor.subscribe("weatherData", searchedCity, {
             onReady: function(){
                 console.log("we subscribed to weatherData " + searchedCity + " :) ");
             }
         });
-        if (handle.ready){
-            console.log("sub ready");
-        }
+
+        this.setState({city: searchedCity, scenarioState: ''});
+
+
         //document.getElementById("loadscreen-wrapper").open();
         while(Weather.find({"city.name" : searchedCity}).fetch().length == 0){};
 
