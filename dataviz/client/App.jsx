@@ -1,46 +1,26 @@
 App = React.createClass({
     search: function(e,searchedCity) {
         e.preventDefault();
-        //get the previous city researched to remove subscription if it is a different one, or do nothing in minimongo if it is the same
-        var previousCity = this.state.city;
 
         this.setState({city: searchedCity, scenarioState: ''});
 
-        if(previousCity != searchedCity){
-            console.log(previousCity);
-            Meteor.subscribe("weatherData", previousCity, {
-                onStop: function(){
-                    console.log("we unsubscribed from weatherData " + previousCity + ":) ");
-                }
-            }).stop();
-            Meteor.subscribe("weatherData", searchedCity, {
-                onReady: function(){
-                    console.log("we subscribed to weatherData " + searchedCity + " :) ");
-                }
-            });
-        } else {
-            console.log("Same city");
-        }
+        Meteor.subscribe("weatherData", searchedCity, {
+            onReady: function(){
+                console.log("we subscribed to weatherData " + searchedCity + " :) ");
+            }
+        });
+        Session.set("city", searchedCity);
     },
 
     getInitialState: function() {
         return {
-            city: 'Toulouse',
+            city: '',
             scenarioState: 'start',
             windowWidth: window.innerWidth,
             windowHeight: window.innerHeight
         };
     },
-    /*componentWillMount: function(){
-        Meteor.subscribe("weatherData", "Grenoble", {
-            onReady: function(){
 
-            }
-        });
-        console.log("we subscribed to weatherData Grenoble :)");
-        console.log(Meteor.subscribe("weatherData", "Grenoble").ready());
-    },*/
-    
     handleResize: function(e) {
         this.setState({windowWidth: window.innerWidth,windowHeight: window.innerHeight});
     },
@@ -55,6 +35,7 @@ App = React.createClass({
 
     render: function() {
         console.log("hey, we are rendering app.jsx");
+        console.log(this.state.city);
         return (
             <div className="weather-cover">
                 <OrganicSearch searchHandler={ this.search } scenarioState={ this.state.scenarioState } />
