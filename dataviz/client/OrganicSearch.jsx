@@ -1,3 +1,4 @@
+var citiesSub;
 OrganicSearch = React.createClass({
 
     getInitialState: function() {
@@ -36,7 +37,19 @@ OrganicSearch = React.createClass({
         var inputString = e.target.value.toLowerCase();
 
         if (inputString.length>0){
-            $.get('/json/liste_villes.json', function(result) {
+            if (citiesSub) {
+                citiesSub.stop();    
+            }
+            
+            citiesSub = Meteor.subscribe("cities", inputString, {
+                onReady: function(){
+                    console.log("we subscribed to cities " + inputString + " :) ");
+                    //that.props.cities= City.find().fetch();
+                }
+            });
+            console.log(City.find().fetch());
+
+            /*$.get('/json/liste_villes.json', function(result) {
                 if (this.isMounted()) {
 
                     var currentSearch = result.villes.filter(function(x) {
@@ -65,7 +78,7 @@ OrganicSearch = React.createClass({
                         cities: currentSearch
                     });
                 }
-            }.bind(this));
+            }.bind(this));*/
         }
 
     },
@@ -82,7 +95,7 @@ OrganicSearch = React.createClass({
                     </form>
                     <div className="row">
                         <div className="organic_search_content">
-                            <Cities close={this.search} cities={this.state.cities} />
+                            <TemplateCities close={this.search} cities={this.state.cities} />
                         </div>
                     </div>
                 </div>
@@ -91,17 +104,17 @@ OrganicSearch = React.createClass({
     }
 });
 
-Cities = React.createClass({
+TemplateCities = React.createClass({
     render: function() {
 
         var rows = [];
         var root = this ;
         // iterate cities and build liste of jsx city
         if(this.props.cities.length == 0){
-            rows.push(<City img="warning.png" close={root.props.close} name="Aucun résultat"/>);
+            rows.push(<TemplateCity img="warning.png" close={root.props.close} name="Aucun résultat"/>);
         }else{
             this.props.cities.forEach(function(element, index){
-                rows.push(<City img="city.jpg" key={index} close={root.props.close} name={element}/>);
+                rows.push(<TemplateCity img="city.jpg" key={index} close={root.props.close} name={element}/>);
             });
         }
         return (
@@ -111,7 +124,7 @@ Cities = React.createClass({
     }
 });
 
-City = React.createClass({
+TemplateCity = React.createClass({
 
     handleSelectCity: function(e){
         this.props.close(e,this.props.name);

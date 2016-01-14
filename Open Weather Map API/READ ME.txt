@@ -1,0 +1,41 @@
+
+******* GENERATING CITIES ID SET:
+
+> python getOpenWeatherMapData.py --gen
+
+******* TO RUN WITHOUT THE SCHEDULER:
+
+> python getOpenWeatherMapData.py
+or
+> python getOpenWeatherMapData.py --country FR
+To get only data for a given country.
+
+** REMEMBER THAT, IF YOU USE THE DEFAULT FORM, YOU CAN ONLY RUN THE SCRIPT ONE TIME PER DAY, BECAUSE OF THE REQUESTS DAILY LIMIT!
+
+The result will be in data/
+
+******* TO CONFIGURE THE SCHEDULER:
+
+First execute:
+> chmod +x runOWM.sh
+
+To set the script to run one time per day: 
+
+> nano crontab -e
+
+put in the end of the file:
+
+> 30 12 * * * ./runOWM.sh
+
+To know if the script is scheduled to run: 
+
+> crontab -l
+
+******* TO FIND A CITY ID:
+
+> python cityIdsFinder.py CITY_NAME LONGITUDE LATITUDE
+
+or run 
+
+> python cityIdsFinder.py for an example
+
