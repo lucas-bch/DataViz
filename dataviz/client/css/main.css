@@ -531,15 +531,17 @@ h1 small {
   animation: rain 3s linear infinite;
 }
 
-/* line 131, ../scss/sass/_loadingscreen.scss */
-#loadscreen-wrapper {
-  position: fixed;
-  text-align: center;
+/*
+#loadscreen-wrapper{
+  position:fixed;
+  text-align:center;
   height: 100%;
   width: 100%;
-}
+
+
+*/
 /* line 139, ../scss/sass/_loadingscreen.scss */
-#loadscreen-wrapper #loadscreen {
+#loadscreen {
   display: block;
   z-index: 2000;
   -webkit-animation-delay: 0;
@@ -570,7 +572,7 @@ h1 small {
   background: #0078CA;
 }
 /* line 149, ../scss/sass/_loadingscreen.scss */
-#loadscreen-wrapper #loadscreen .icon {
+#loadscreen .icon {
   -webkit-animation-delay: 0;
   -webkit-animation-duration: 3s;
   -webkit-animation-name: scale;
@@ -600,40 +602,43 @@ h1 small {
   /* control icon size here */
 }
 /* line 160, ../scss/sass/_loadingscreen.scss */
-#loadscreen-wrapper #loadscreen svg {
+#loadscreen svg {
   width: 7em;
   position: relative;
   top: 7em;
   left: 1.5em;
 }
+
 /* line 168, ../scss/sass/_loadingscreen.scss */
-#loadscreen-wrapper #loadscreen.closing {
-  -webkit-animation-delay: 0;
-  -webkit-animation-duration: 3s;
+#loadscreen.closing {
+  -webkit-animation-delay: 0s;
+  -webkit-animation-duration: 1s;
   -webkit-animation-name: slide-up;
   -webkit-animation-fill-mode: forwards;
   /* this prevents the animation from restarting! */
-  -moz-animation-delay: 0;
-  -moz-animation-duration: 3s;
+  -moz-animation-delay: 0s;
+  -moz-animation-duration: 1s;
   -moz-animation-name: slide-up;
   -moz-animation-fill-mode: forwards;
   /* this prevents the animation from restarting! */
-  -o-animation-delay: 0;
-  -o-animation-duration: 3s;
+  -o-animation-delay: 0s;
+  -o-animation-duration: 1s;
   -o-animation-name: slide-up;
   -o-animation-fill-mode: forwards;
   /* this prevents the animation from restarting! */
-  animation-delay: 0;
-  animation-duration: 3s;
+  animation-delay: 0s;
+  animation-duration: 1s;
   animation-name: slide-up;
   animation-fill-mode: forwards;
   /* this prevents the animation from restarting! */
 }
+
 /* line 172, ../scss/sass/_loadingscreen.scss */
-#loadscreen-wrapper #loadscreen.closed {
+#loadscreen.closed {
   display: none;
 }
 
+/*}*/
 /* line 10, ../scss/sass/main.scss */
 body #body-background {
   position: absolute;

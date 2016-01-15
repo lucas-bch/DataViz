@@ -127,7 +127,7 @@
 }
 
 
-
+/*
 #loadscreen-wrapper{
   position:fixed;
   text-align:center;
@@ -135,11 +135,11 @@
   width: 100%;
 
 
-
+*/
   #loadscreen{
     display: block;
     z-index: 2000;
-    @include animation(0,1s,slide-down);
+    @include animation(0, 1s, slide-down);
     transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1) 0.3s;
     position:fixed;
     text-align:center;
@@ -166,7 +166,7 @@
 
   }
   #loadscreen.closing{
-    @include animation(0,3s,slide-up);
+    @include animation(0s, 1s, slide-up);
   }
 
   #loadscreen.closed{
@@ -175,7 +175,9 @@
 
 
 
-}
+/*}*/
+
+
 
 
 
