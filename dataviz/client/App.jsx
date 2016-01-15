@@ -12,20 +12,23 @@ App = React.createClass({
             }
         });
 
-        this.setState({city: searchedCity, scenarioState: ''});
+        this.setState({city: searchedCity, loaderState: 'open'});
 
 
         //document.getElementById("loadscreen-wrapper").open();
-        while(Weather.find({"city.name" : searchedCity}).fetch().length == 0){};
-
-        console.log(Weather.find().fetch());
-
+      //  while(Weather.find({"city.name" : searchedCity}).fetch().length == 0){};
+        (function(self) {
+            setTimeout(function(){
+                self.setState({scenarioState: '', loaderState: 'closing'});
+            }, 3000);
+        })(this);
     },
 
     getInitialState: function() {
         return {
             city: '',
             scenarioState: 'start',
+            loaderState: 'closed',
             windowWidth: window.innerWidth,
             windowHeight: window.innerHeight
         };
@@ -48,6 +51,7 @@ App = React.createClass({
         console.log(this.state.city);
         return (
             <div className="weather-cover">
+                <Loader state={this.state.loaderState}/>
                 <OrganicSearch searchHandler={ this.search } scenarioState={ this.state.scenarioState } />
                 <main className={ this.state.scenarioState }>
                     <div style={{height: this.state.windowHeight+ 'px',width: this.state.windowWidth+ 'px'}} className=" weather-wrapper">

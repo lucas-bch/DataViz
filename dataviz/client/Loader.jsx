@@ -28,7 +28,7 @@ Loader = React.createClass({
 
     render: function() {
         return (
-        <div id="loadscreen" className={this.state.class} onClick={this.close}>
+        <div id="loadscreen" className={this.props.state} onClick={this.close}>
             <div className="icon sun-shower">
                 <div className="cloud"></div>
                 <div className="sun">
