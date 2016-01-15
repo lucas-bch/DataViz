@@ -1,11 +1,10 @@
+
+
 Historic = React.createClass({
-
-
     render: function(){
         return (
             <div className="historic-body">
                 <div className="container center-align">
-                    <a className="btn-floating center red  btn-large waves-effect waves-light z-depth-0" href="#statistiques"><i className="fa fa-chevron-down"></i></a>
                     <h2 id="statistiques">Statistiques</h2>
                     <div className="row">
 
@@ -25,22 +24,20 @@ Historic = React.createClass({
                         <div id="moyennes" className="col s12">
                             <div className="row">
                                 <div className="col m4">
-                                    <div className="card red white-text">
-                                            <span className="card-title">Températures</span>
-                                        <div className="card-content">
-                                            <h4>25°C</h4>
-                                        </div>
-                                    </div>
+                                    <BasicCard  color={"red"} unit = {"°C"} value = {"25"} title = {"Températures"}/>
                                 </div>
-
+                                <div className="col m4">
+                                    <BasicCard  color={"green"} unit = {"km/h"} value = {"25"} title = {"Vent"}/>
+                                </div>
+                                <div className="col m4">
+                                    <BasicCard  color={"blue"} unit = {"mm"} value = {"25"} title = {"Précipitations"}/>
+                                </div>
                             </div>
                         </div>
-
                         <div id="records" className="col s12">
                             <div className="row">
                                 <div className="col m4">
-                                    <h4>Plus haute températures</h4>
-                                    <p>25°C</p>
+                                    <MaxMinCard color={"blue"} unit = {"mm"} max = {"25"} min={"6"} title = {"Précipitations"}/>
                                 </div>
                             </div>
                         </div>
@@ -49,6 +46,5 @@ Historic = React.createClass({
                 </div>
             </div>
         );
-        }
-
-        });
+    }
+});
