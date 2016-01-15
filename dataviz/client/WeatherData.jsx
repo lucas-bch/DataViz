@@ -33,7 +33,7 @@ var getDataDay = function(label) {
     console.log(label + " correspond to ");
     console.log(lab);
     //IS IT POSSIBLE ? Or else use this.state...
-    Weather.find({"city.list."})
+    //Weather.find({"city.list."})
 
 }
 // As options we currently only set a static size of 300x200 px

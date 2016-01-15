@@ -48,7 +48,7 @@ OrganicSearch = React.createClass({
                 }
             });
             console.log(City.find().fetch());
-
+            //this.setState({cities : City.find().fetch()});
             /*$.get('/json/liste_villes.json', function(result) {
                 if (this.isMounted()) {
 
