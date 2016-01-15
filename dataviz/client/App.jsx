@@ -45,7 +45,6 @@ App = React.createClass({
     
     render: function() {
         console.log("hey, we are rendering app.jsx");
-        console.log(this.state.city);
         return (
             <div className="weather-cover">
                 <OrganicSearch searchHandler={ this.search } scenarioState={ this.state.scenarioState } />

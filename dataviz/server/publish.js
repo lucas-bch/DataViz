@@ -13,7 +13,6 @@ if (Meteor.isServer) {
 
 
 		var cities =City.find({name:{$regex: search, $options: "i"}}, {limit:6});
-		console.log(cities);
 		if(cities) {
 			return cities;
 		}

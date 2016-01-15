@@ -1,19 +1,30 @@
-var data = {
-    // A labels array that can contain any sort of values
-    labels: ['6:00', '9:00', '12:00', '15:00', '18:00',"21:0","00:00"],
-    // Our series array that contains series objects or in this case series data arrays
-    series: [
-        [5, 2, 4, 2, 0,2,1 ]
-    ]
+var now = new Date();
+
+var getDataDay1 = function() {
+    console.log(now.getHours());
+    data = {
+        // A labels array that can contain any sort of values
+        labels: ['3:00', '6:00', '9:00', '12:00', '15:00', '18:00',"21:0","00:00"],
+        // Our series array that contains series objects or in this case series data arrays
+        series: [
+            [3, 5, 2, 4, 2, 0,2,1 ]
+        ]
+    }
+    return data;
 };
 
-var data2 = {
+var getData4Days = function() {
+    
+    console.log(now.getDate());
     // A labels array that can contain any sort of values
-    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri',"Sat","Sun"],
-    // Our series array that contains series objects or in this case series data arrays
-    series: [
-        [3, 4, 4, 2,3,2,1 ]
-    ]
+    data = {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri',"Sat","Sun" , 'Mon'],
+        // Our series array that contains series objects or in this case series data arrays
+        series: [
+            [3, 4, 4, 2,3,2,1, 5]
+        ]
+    }
+    return data;
 };
 
 // As options we currently only set a static size of 300x200 px
@@ -23,6 +34,7 @@ var options = {
     showArea: true
 };
 
+
 WeatherData = React.createClass({
     propTypes: {
         city: React.PropTypes.string.isRequired
@@ -30,7 +42,7 @@ WeatherData = React.createClass({
 
     getInitialState: function() {
         return {
-            temperature: 24,
+            temperature: "",
             weather : {},
             list: [ {
                 "dt":0,
@@ -67,40 +79,35 @@ WeatherData = React.createClass({
         };
     },
 
-    changeScale: function(e,option){
-        var dataSet;
-        switch (option){
-            case "hourly" :
-                dataSet = data;
-                break;
-            case"daily":
-                dataSet = data2;
-                break;
-            case "weekly" :
-                dataSet = data;
-                break;
-            default :
-                dataSet = data;
-        }
+    set1day: function(e,option){
+        //this.setState({data : getDataDay1()})
+        this.state.weather = new WeatherGraph(".ct-chart",options,getDataDay1());
 
-        this.state.weather.updateData(dataSet);
+    },
+
+    set5days: function(e,option){
+        //this.setState({data : getData4Days()})
+        this.state.weather = new WeatherGraph(".ct-chart",options,getData4Days());
+
     },
 
     componentDidMount : function(){
-        this.state.weather = new WeatherGraph(".ct-chart",options,data);
+        this.state.weather = new WeatherGraph(".ct-chart",options,getDataDay1());
     },
+
     componentWillReceiveProps : function(nextProps) {
         console.log(nextProps.city);
         console.log(Weather.find().fetch());
         var result = Weather.find({"city.name": nextProps.city}).fetch();
         console.log(result);
+        result = result[0];
         if (this.isMounted()) {
-            result.data.forEach(function(element, index){
+            result.list.forEach(function(element, index){
                 // convertion de température
                 element.main.temp = (element.main.temp - 273).toFixed(1);
             });
             this.setState({
-                data: result.data
+                list: result.list
             });
         }
     },
@@ -129,11 +136,9 @@ WeatherData = React.createClass({
                                 <div className="row">
                                     <div className="col m2 l2 weather-options">
 
-                                        <a className="weather-option waves-effect waves-light btn-large" onClick={this.changeScale}>Hourly</a>
+                                        <a className="weather-option waves-effect waves-light btn-large" onClick={this.set1day}>Today</a>
 
-                                        <a className="weather-option waves-effect waves-light btn-large" onClick={this.changeScale}>Daily</a>
-
-                                        <a className="weather-option waves-effect waves-light btn-large" onClick={this.changeScale}>Weekly</a>
+                                        <a className="weather-option waves-effect waves-light btn-large" onClick={this.set5days}>5 days</a>
 
                                     </div>
                                     <div className="col m8 l8 weather-graph">
