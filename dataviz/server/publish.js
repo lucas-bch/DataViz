@@ -8,7 +8,7 @@ if (Meteor.isServer) {
 	});
 
 	Meteor.publish("cities", function(search) {
-		//City = new Mongo.Collection("city");
+
 		search = search.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
 
 
