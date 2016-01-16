@@ -132,7 +132,6 @@ WeatherData = React.createClass({
         //this.setState({data : getData4Days()})
         this.state.weather.updateData(this.getData4Days());
         this.setState({state : 1});
-
     },
 
     componentDidMount : function(){
@@ -277,4 +276,3 @@ var WeatherGraph = (function(){
 
     return WeatherGraph;
 })();
-

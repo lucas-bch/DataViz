@@ -42,12 +42,13 @@ App = React.createClass({
     componentWillUnmount: function() {
         window.removeEventListener('resize', this.handleResize);
     },
-    
+
     render: function() {
         console.log("hey, we are rendering app.jsx");
         return (
             <div className="weather-cover">
                 <Loader state={this.state.loaderState}/>
+                
                 <OrganicSearch searchHandler={ this.search } scenarioState={ this.state.scenarioState } />
                 <main className={ this.state.scenarioState }>
                     <div style={{height: this.state.windowHeight+ 'px',width: this.state.windowWidth+ 'px'}} className=" weather-wrapper">
@@ -61,3 +62,10 @@ App = React.createClass({
         );
     }
 });
+
+// Kévin teste ton code avant de merge stp :p
+/*<div id="btn-statistiques" className="fixed-action-btn">
+                    <a  href="#statistiques" className="btn-floating blue lighten-1  btn-large">
+                        <i className=" material-icons">assessment</i>
+                    </a>
+                </div>*/

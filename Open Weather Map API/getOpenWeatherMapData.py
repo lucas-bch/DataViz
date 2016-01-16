@@ -40,7 +40,7 @@ def runCountry(country):
 	owmc = OpenWeatherMapClient()
 	for cityId in countryIdsList:
 		if numberPerMinute == 55:
-				time.sleep(3600)
+				time.sleep(60)
 				numberPerMinute = 0
 		owmc.fiveDayForecast(cityId)
 		numberPerMinute+=1
