@@ -73,7 +73,7 @@ WeatherData = React.createClass({
             case "hourly" :
                 dataSet = data;
                 break;
-            case"daily":
+            case "daily" :
                 dataSet = data2;
                 break;
             case "weekly" :
@@ -219,4 +219,3 @@ var WeatherGraph = (function(){
 
     return WeatherGraph;
 })();
-

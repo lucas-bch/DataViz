@@ -38,9 +38,9 @@ OrganicSearch = React.createClass({
 
         if (inputString.length>0){
             if (citiesSub) {
-                citiesSub.stop();    
+                citiesSub.stop();
             }
-            
+
             citiesSub = Meteor.subscribe("cities", inputString, {
                 onReady: function(){
                     console.log("we subscribed to cities " + inputString + " :) ");
@@ -87,7 +87,7 @@ OrganicSearch = React.createClass({
         return (
             <div className={'organic_search ' + this.state.openClass}>
                 <a href="#" className="organic_search_control red lighten-1 btn-floating btn-large" onClick={ this.handleControl }>
-                    <i className="small material-icons">{ this.state.buttonName }</i>
+                    <i className=" material-icons">{ this.state.buttonName }</i>
                 </a>
                 <div className="container">
                     <form className="organic_search_form" onSubmit={ this.searchHandler }>

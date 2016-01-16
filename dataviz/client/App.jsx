@@ -16,7 +16,7 @@ App = React.createClass({
 
 
         //document.getElementById("loadscreen-wrapper").open();
-      //  while(Weather.find({"city.name" : searchedCity}).fetch().length == 0){};
+        //  while(Weather.find({"city.name" : searchedCity}).fetch().length == 0){};
         (function(self) {
             setTimeout(function(){
                 self.setState({scenarioState: '', loaderState: 'closing'});
@@ -45,13 +45,19 @@ App = React.createClass({
     componentWillUnmount: function() {
         window.removeEventListener('resize', this.handleResize);
     },
-    
+
     render: function() {
         console.log("hey, we are rendering app.jsx");
         console.log(this.state.city);
         return (
             <div className="weather-cover">
                 <Loader state={this.state.loaderState}/>
+                <div id="btn-statistiques" className="fixed-action-btn">
+                    <a  href="#statistiques" className="btn-floating blue lighten-1  btn-large">
+                        <i className=" material-icons">assessment</i>
+                    </a>
+                </div>
+
                 <OrganicSearch searchHandler={ this.search } scenarioState={ this.state.scenarioState } />
                 <main className={ this.state.scenarioState }>
                     <div style={{height: this.state.windowHeight+ 'px',width: this.state.windowWidth+ 'px'}} className=" weather-wrapper">

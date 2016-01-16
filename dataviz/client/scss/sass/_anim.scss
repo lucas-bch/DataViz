@@ -1,25 +1,19 @@
 
+// Import animation
 @import "keyframe";
 @import "animation";
-
 
 @include keyframe(fade){
   0%{
     transition-timing-function: cubic-bezier(0.215,0.610,0.355,1.00);
   }
-
   0%{
     opacity: 0;
   }
-
   100%{
     opacity: 1;
   }
-
-
 }
-
-
 
 #city{
   @include animation(0s,4s,rise);
