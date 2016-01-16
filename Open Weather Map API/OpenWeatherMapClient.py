@@ -24,6 +24,7 @@ class OpenWeatherMapClient():
 			data = self.makeARequest(requestInfo)
 			self.generateNewJson(data, "fiveDayForecast")
 		except Exception as ex:
+			print requestInfo
 			print ex.args
 
 	def makeARequest(self, requestInfo):
@@ -41,8 +42,7 @@ class OpenWeatherMapClient():
 		name = data[u'city'][u'name'].replace('/','')
 		lat = str(data[u'city'][u'coord'][u'lat'])
 		lon = str(data[u'city'][u'coord'][u'lon'])
-		fileName = prefix+ "=" + "_".join([name,lon,lat,dayAndHour]) + ".json"
-
+		fileName = prefix+ "=" + "_".join([name,lon,lat]) + ".json"
 		#making sure that the directory exists
 		if not os.path.exists('data/'):
 				os.makedirs('data/')
@@ -64,6 +64,9 @@ class OpenWeatherMapClient():
 					hist_list.append(element)
 		except IOError:
 			pass
+		except Exception as e:
+			print fileName
+			print e.args
 		finally:
 			with open("data/historical_"+fileName,'w') as jsonFile:
 				if hist_data == None:
