@@ -10,13 +10,10 @@ App = React.createClass({
             onReady: function(){
                 console.log("we subscribed to weatherData " + searchedCity + " :) ");
             }
-        });
+        }); 
 
         this.setState({city: searchedCity, loaderState: 'open'});
 
-
-        //document.getElementById("loadscreen-wrapper").open();
-      //  while(Weather.find({"city.name" : searchedCity}).fetch().length == 0){};
         (function(self) {
             setTimeout(function(){
                 self.setState({scenarioState: '', loaderState: 'closing'});

@@ -1,41 +1,9 @@
 var now = new Date();
+var date = now.toJSON().split('T')[0];
 
-var getDataDay1 = function() {
-    console.log(now.getHours());
-    data = {
-        // A labels array that can contain any sort of values
-        labels: ['3:00', '6:00', '9:00', '12:00', '15:00', '18:00',"21:0","00:00"],
-        // Our series array that contains series objects or in this case series data arrays
-        series: [
-                    [3, 5, 2, 4, 2, 0, 2, 1]
-        ]
-    }
-    getDataDay("6:00");
-    return data;
-};
 
-var getData4Days = function() {
-    var daysOfWeek = new Array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
-    console.log(daysOfWeek[now.getDay()]);
-    // A labels array that can contain any sort of values
-    data = {
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri',"Sat","Sun" , 'Mon'],
-        // Our series array that contains series objects or in this case series data arrays
-        series: [
-            [3, 4, 4, 2, 3, 2, 1, 5]
-        ]
-    }
-    return data;
-};
 
-var getDataDay = function(label) {
-    var lab = parseInt(label.replace(":00", ""), 10);
-    console.log(label + " correspond to ");
-    console.log(lab);
-    //IS IT POSSIBLE ? Or else use this.state...
-    //Weather.find({"city.list."})
 
-}
 // As options we currently only set a static size of 300x200 px
 var options = {
     height: '250px',
@@ -47,6 +15,70 @@ var options = {
 WeatherData = React.createClass({
     propTypes: {
         city: React.PropTypes.string.isRequired
+    },
+
+    getDataDay1 : function() {
+        console.log(now.getHours());
+        console.log(now);
+        console.log(date);
+        
+        var serie = [3, 4, 4, 2, 3, 2, 1, 5];
+        var labels = ['03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00','00:00'];
+
+        if(this.state.list[1] != undefined) {
+            var lab = parseInt(this.state.list[0].dt_txt.split(' ')[1].replace(":00:00", ""), 10);
+            console.log("lab : " + lab);
+            var hour;
+            for (var i = 0; i<8; i++){
+                serie[i] = this.state.list[i].main.temp;
+                hour = (3*i + lab) % 24;
+                if (hour < 10) {
+                    labels[i] = ("0" + hour + ":00");
+                } else {
+                    labels[i] = (hour + ":00");
+                }
+            }
+        }
+        data = {
+            // A labels array that can contain any sort of values
+            labels : labels,
+            // Our series array that contains series objects or in this case series data arrays
+            series: [serie]
+        }
+        this.getDataDay("06:00");
+        return data;
+    },
+
+    getData4Days : function() {
+        var daysOfWeek = new Array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
+        console.log(daysOfWeek[now.getDay()]);
+        // A labels array that can contain any sort of values
+        data = {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', "Sat", "Sun" , 'Mon'],
+            // Our series array that contains series objects or in this case series data arrays
+            series: [
+                [3, 4, 4, 2, 3, 2, 1, 5]
+            ]
+        }
+        return data;
+    },
+
+    getDataDay : function(label, day) {
+        var lab = parseInt(label.replace(":00", ""), 10);
+        console.log("2015-12-17" + " " + label + " correspond to ");
+        console.log(lab);
+        //IS IT POSSIBLE ? Or else use this.state...
+        //Weather.find({"city.list."})
+
+        // Usage of this.state.list
+        var i;
+        var testData = this.state.list.find(function(element, index) {
+            i = index;
+            return element.dt_txt === ("2015-12-17" + " " + label + ":00");
+        })
+        
+        console.log(testData);
+        console.log("at index " + i);
     },
 
     getInitialState: function() {
@@ -90,18 +122,18 @@ WeatherData = React.createClass({
 
     set1day: function(e,option){
         //this.setState({data : getDataDay1()})
-        this.state.weather.updateData(getDataDay1());
+        this.state.weather.updateData(this.getDataDay1());
 
     },
 
     set5days: function(e,option){
         //this.setState({data : getData4Days()})
-        this.state.weather.updateData(getData4Days());
+        this.state.weather.updateData(this.getData4Days());
 
     },
 
     componentDidMount : function(){
-        this.state.weather = new WeatherGraph(".ct-chart",options,getDataDay1());
+        this.state.weather = new WeatherGraph(".ct-chart",options, this.getDataDay1());
     },
 
     componentWillReceiveProps : function(nextProps) {
@@ -120,6 +152,10 @@ WeatherData = React.createClass({
                 list: result.list
             });
         }
+    },
+    
+    componentDidUpdate : function() {
+        this.state.weather.updateData(this.getDataDay1());
     },
 
     render : function(){
