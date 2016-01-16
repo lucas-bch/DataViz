@@ -1,7 +1,0 @@
--- Weather.find().fetch()[0].data[2].dt_txt -> renvoie une date
-
-TODO :
--- Faire sélection avec les villes (subscribe("weatherData", cityname));
--- WeatherData.jsx : accorder data avec ville courante
--- Faire liste villes (?)
--- 

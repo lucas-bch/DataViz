@@ -21,13 +21,40 @@ WeatherData = React.createClass({
         if(this.state.list[1] != undefined) {
             var lab = parseInt(this.state.list[0].dt_txt.split(' ')[1].replace(":00:00", ""), 10);
             var hour;
-            for (var i = 0; i<8; i++){
-                serie[i] = this.state.list[i].main.temp;
-                hour = (3*i + lab) % 24;
-                if (hour < 10) {
-                    labels[i] = ("0" + hour + ":00");
-                } else {
-                    labels[i] = (hour + ":00");
+
+            if(this.state.displayedData === "Temp") {
+                for (var i = 0; i<8; i++){
+                    serie[i] = this.state.list[i].main.temp;
+                    hour = (3*i + lab) % 24;
+                    if (hour < 10) {
+                        labels[i] = ("0" + hour + ":00");
+                    } else {
+                        labels[i] = (hour + ":00");
+                    }
+                }
+            } else if (this.state.displayedData === "Wind"){
+                for (var i = 0; i<8; i++){
+                    serie[i] = this.state.list[i].wind.speed;
+                    hour = (3*i + lab) % 24;
+                    if (hour < 10) {
+                        labels[i] = ("0" + hour + ":00");
+                    } else {
+                        labels[i] = (hour + ":00");
+                    }
+                }
+            } else if (this.state.displayedData === "Rain"){
+                for (var i = 0; i<8; i++){
+                    if (this.state.list[i].rain["3h"] != undefined) {
+                        serie[i] = this.state.list[i].rain["3h"];
+                    } else {
+                        serie[i] = 0;
+                    }
+                    hour = (3*i + lab) % 24;
+                    if (hour < 10) {
+                        labels[i] = ("0" + hour + ":00");
+                    } else {
+                        labels[i] = (hour + ":00");
+                    }
                 }
             }
         }
@@ -66,9 +93,29 @@ WeatherData = React.createClass({
             if (index < 4)
                 index += 8;
 
-            for (var i=0; i<4; i++){
-                morning[i] = this.state.list[index + i*8].main.temp;
-                afternoon[i] = this.state.list[index + i*8 + 2].main.temp;
+            if(this.state.displayedData === "Temp") {
+                for (var i=0; i<4; i++){
+                    morning[i] = this.state.list[index + i*8].main.temp;
+                    afternoon[i] = this.state.list[index + i*8 + 2].main.temp;
+                }
+            } else if (this.state.displayedData === "Wind") {
+                for (var i=0; i<4; i++){
+                    morning[i] = this.state.list[index + i*8].wind.speed;
+                    afternoon[i] = this.state.list[index + i*8 + 2].wind.speed;
+                }
+            } else if (this.state.displayedData === "Rain") {
+                for (var i=0; i<4; i++){
+                    if (this.state.list[index +i*8].rain['3h'] != undefined){
+                        morning[i] = this.state.list[index + i*8].rain['3h'];
+                    } else {
+                        morning[i] = 0;
+                    }
+                    if (this.state.list[index +i*8 + 2].rain['3h'] != undefined){
+                        afternoon[i] = this.state.list[index + i*8 + 2].rain['3h'];
+                    } else {
+                        afternoon[i] = 0;
+                    }
+                }
             }
 
         }
@@ -85,7 +132,8 @@ WeatherData = React.createClass({
     getInitialState: function() {
         return {
             temperature: "",
-            state : 0,
+            timeScale : 0,
+            displayedData : "Temp",
             weather : {},
             list: [ {
                 "dt":0,
@@ -125,13 +173,28 @@ WeatherData = React.createClass({
     set1day: function(e,option){
         //this.setState({data : getDataDay1()})
         this.state.weather.updateData(this.getDataDay1());
-        this.setState({state : 0});
+        this.setState({timeScale : 0});
     },
 
     set5days: function(e,option){
         //this.setState({data : getData4Days()})
         this.state.weather.updateData(this.getData4Days());
-        this.setState({state : 1});
+        this.setState({timeScale : 1});
+    },
+
+    setTemp : function(e, option) {
+        this.setState({displayedData : "Temp"});
+        this.componentDidUpdate();
+    },
+
+    setWind : function(e, option) {
+        this.setState({displayedData : "Wind"});
+        this.componentDidUpdate();
+    },
+
+    setRain : function(e, option) {
+        this.setState({displayedData : "Rain"});
+        this.componentDidUpdate();
     },
 
     componentDidMount : function(){
@@ -149,6 +212,7 @@ WeatherData = React.createClass({
             result.list.forEach(function(element, index){
                 // convertion de température
                 element.main.temp = (element.main.temp - 273).toFixed(1);
+                element.wind.speed = (element.wind.speed * 3.6).toFixed(1);
             });
             this.setState({
                 list: result.list
@@ -157,7 +221,7 @@ WeatherData = React.createClass({
     },
 
     componentDidUpdate : function() {
-        if (this.state.state == 0){
+        if (this.state.timeScale == 0){
             this.state.weather.updateData(this.getDataDay1());
         } else {
             this.state.weather.updateData(this.getData4Days());
@@ -198,11 +262,11 @@ WeatherData = React.createClass({
                                     </div>
                                     <div className="col m2 l2 weather-types ">
 
-                                        <a className="type-weather btn-floating btn-large waves-effect waves-light red"><i className="wi wi-thermometer-exterior"></i></a>
+                                        <a className="type-weather btn-floating btn-large waves-effect waves-light red" onClick={this.setTemp}><i className="wi wi-thermometer-exterior"></i></a>
 
-                                        <a className="type-weather btn-floating btn-large waves-effect waves-light green"><i className="wi wi-strong-wind"></i></a>
+                                        <a className="type-weather btn-floating btn-large waves-effect waves-light green" onClick={this.setWind}><i className="wi wi-strong-wind"></i></a>
 
-                                        <a className="type-weather btn-floating btn-large waves-effect waves-light blue"><i className="wi wi-rain"></i></a>
+                                        <a className="type-weather btn-floating btn-large waves-effect waves-light blue" onClick={this.setRain}><i className="wi wi-rain"></i></a>
                                     </div>
                                 </div>
                             </div>
