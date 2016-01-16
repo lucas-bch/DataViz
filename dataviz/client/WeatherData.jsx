@@ -53,8 +53,6 @@ WeatherData = React.createClass({
 
         for (var i=0; i<4; i++) {
             labels[i] = (daysOfWeek[(tomorrow + i)%7] + "");
-            //labels[2*i] = (daysOfWeek[(tomorrow + i)%7] + " am");
-            //labels[2*i+1] = (daysOfWeek[(tomorrow + i)%7] + " pm");
         }
 
         if(this.state.list[1] != undefined) {
