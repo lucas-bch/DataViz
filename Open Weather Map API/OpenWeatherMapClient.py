@@ -58,7 +58,7 @@ class OpenWeatherMapClient():
 		hist_data = None
 		try:
 			with open("data/historical_"+fileName,'r') as jsonFile:
-				hist_data = json.loads(jsonFile)
+				hist_data = json.load(jsonFile)
 				h = hist_data[u'list'] 
 				for element in h:
 					hist_list.append(element)
