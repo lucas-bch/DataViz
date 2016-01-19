@@ -47,10 +47,21 @@ OrganicSearch = React.createClass({
                     //that.props.cities= City.find().fetch();
                 }
             });
-            console.log(City.find().fetch());
+
+            var cityList = [];
+            
+            City.find().fetch().forEach(function(city) {
+                cityList.push(city.name);
+            });
+
+            this.setState({
+                cities: cityList
+            });
+
             //this.setState({cities : City.find().fetch()});
             /*$.get('/json/liste_villes.json', function(result) {
                 if (this.isMounted()) {
+
 
                     var currentSearch = result.villes.filter(function(x) {
                         return x.toLowerCase().indexOf(inputString)>-1;
