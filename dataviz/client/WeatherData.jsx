@@ -212,8 +212,25 @@ WeatherData = React.createClass({
         if (this.state.timeScale == 0){
             this.state.weather.updateData(this.getDataDay1());
         } else {
-            this.state.weather.updateData(this.getData4Days());
+            this.state.weather.updateData(this.getData4Days(), ["morning", "afternoon"]);
         }
+    },
+
+    getDisplayedDataInfo : function () {
+        var sentence = "forecast for ";
+        if (this.state.timeScale == 0) {
+            sentence = sentence + "24h"
+        } else {
+            sentence = sentence + "4 days, starting tomorrow. Blue : Morning | Green : Afternoon";
+        }
+        if(this.state.displayedData === "Temp"){
+            sentence = "Temperature " + sentence;
+        } else if (this.state.displayedData === "Wind") {
+            sentence = "Wind " + sentence;
+        } else if (this.state.displayedData === "Rain") {
+            sentence = "Rain " + sentence;
+        }
+        return sentence;
     },
 
     render : function(){
@@ -257,6 +274,9 @@ WeatherData = React.createClass({
                                         <a className="type-weather btn-floating btn-large waves-effect waves-light blue" onClick={this.setData}><i className="wi wi-rain" id="Rain"></i></a>
                                     </div>
                                 </div>
+                                <div className="row">
+                                    <div className="today-informations">{this.getDisplayedDataInfo()}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -270,17 +290,16 @@ WeatherData = React.createClass({
 var WeatherGraph = (function(){
 
 
-    function WeatherGraph (selector, options, data){
+    function WeatherGraph (selector, options, data, legend){
         this.selector = selector;
         this.data = data ;
         this.options = options;
         this.chart = new Chartist.Line(this.selector, data, options);
 
-
         // Let's put a sequence number aside so we can use it in the event callbacks
         this.seq = 0;
 
-// Once the chart is fully created we reset the sequence
+        // Once the chart is fully created we reset the sequence
         (this.chart).on('created', function() {
             this.seq = 0;
         });
@@ -318,10 +337,13 @@ var WeatherGraph = (function(){
 
     }
 
-    WeatherGraph.prototype.updateData = function(data){
+    WeatherGraph.prototype.updateData = function(data, legend){
         var self = this;
         if(undefined !== data){
             self.data = data;
+            if (legend) {
+                self.legend = legend;
+            }
             self.chart.update(self.data);
         }
         return this;
