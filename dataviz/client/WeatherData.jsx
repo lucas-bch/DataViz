@@ -212,6 +212,23 @@ WeatherData = React.createClass({
         }
     },
 
+    getDisplayedDataInfo : function () {
+        var sentence = "forecast for ";
+        if (this.state.timeScale == 0) {
+            sentence = sentence + "24h"
+        } else {
+            sentence = sentence + "4 days, starting tomorrow. Blue : Morning | Green : Afternoon";
+        }
+        if(this.state.displayedData === "Temp"){
+            sentence = "Temperature " + sentence;
+        } else if (this.state.displayedData === "Wind") {
+            sentence = "Wind " + sentence;
+        } else if (this.state.displayedData === "Rain") {
+            sentence = "Rain " + sentence;
+        }
+        return sentence;
+    },
+
     render : function(){
         return (
             <div className="row weather-body">
@@ -253,6 +270,9 @@ WeatherData = React.createClass({
                                         <a className="type-weather btn-floating btn-large waves-effect waves-light blue" onClick={this.setData}><i className="wi wi-rain" id="Rain"></i></a>
                                     </div>
                                 </div>
+                                <div className="row">
+                                    <div className="today-informations">{this.getDisplayedDataInfo()}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -272,9 +292,13 @@ var WeatherGraph = (function(){
         this.options = options;
         if(legend) {
             this.legend = legend;
-            console.log(legend);
         }
-        this.chart = new Chartist.Line(this.selector, data, options, {plugins: [Chartist.plugins.legend({legendNames:this.legend})]});
+        this.chart = new Chartist.Line(
+            this.selector, 
+            data, 
+            options, 
+            {plugins: [Chartist.plugins.legend({legendNames:this.legend})]} // not working
+            );
         
         // Let's put a sequence number aside so we can use it in the event callbacks
         this.seq = 0;
@@ -322,7 +346,6 @@ var WeatherGraph = (function(){
         if(undefined !== data){
             self.data = data;
             if (legend) {
-                console.log(legend);
                 self.legend = legend;
             }
             self.chart.update(self.data);
