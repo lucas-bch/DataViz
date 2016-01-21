@@ -6,11 +6,7 @@ App = React.createClass({
         if (dataSub && (searchedCity != this.state.city)){
             dataSub.stop();
         }
-        dataSub = Meteor.subscribe("weatherData", searchedCity, {
-            onReady: function(){
-                console.log("we subscribed to weatherData " + searchedCity + " :) ");
-            }
-        }); 
+        dataSub = Meteor.subscribe("weatherData", searchedCity); 
 
         this.setState({city: searchedCity, loaderState: 'open'});
 
@@ -44,7 +40,6 @@ App = React.createClass({
     },
 
     render: function() {
-        console.log("hey, we are rendering app.jsx");
         return (
             <div className="weather-cover">
                 <Loader state={this.state.loaderState}/>
@@ -62,10 +57,3 @@ App = React.createClass({
         );
     }
 });
-
-// Kévin teste ton code avant de merge stp :p
-/*<div id="btn-statistiques" className="fixed-action-btn">
-                    <a  href="#statistiques" className="btn-floating blue lighten-1  btn-large">
-                        <i className=" material-icons">assessment</i>
-                    </a>
-                </div>*/

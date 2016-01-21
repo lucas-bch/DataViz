@@ -41,12 +41,7 @@ OrganicSearch = React.createClass({
                 citiesSub.stop();
             }
 
-            citiesSub = Meteor.subscribe("cities", inputString, {
-                onReady: function(){
-                    console.log("we subscribed to cities " + inputString + " :) ");
-                    //that.props.cities= City.find().fetch();
-                }
-            });
+            citiesSub = Meteor.subscribe("cities", inputString);
 
             var cityList = [];
             
@@ -57,41 +52,7 @@ OrganicSearch = React.createClass({
             this.setState({
                 cities: cityList
             });
-
-            //this.setState({cities : City.find().fetch()});
-            /*$.get('/json/liste_villes.json', function(result) {
-                if (this.isMounted()) {
-
-
-                    var currentSearch = result.villes.filter(function(x) {
-                        return x.toLowerCase().indexOf(inputString)>-1;
-                    });
-
-                    currentSearch.sort(
-                        function compare(a, b) {
-                            var indexeA = a.toLowerCase().indexOf(inputString);
-                            var indexeB = b.toLowerCase().indexOf(inputString);
-
-                            if (indexeA>indexeB){
-                                return -1;
-                            }
-
-                            if (indexeA<indexeB){
-                                return 1;
-                            }
-                            return 0;
-                        }
-                    );
-
-                    currentSearch.splice(0,currentSearch.length-6);
-
-                    this.setState({
-                        cities: currentSearch
-                    });
-                }
-            }.bind(this));*/
         }
-
     },
 
     render: function() {
@@ -144,13 +105,13 @@ TemplateCity = React.createClass({
     render: function() {
         return (
             <div className="col s12 m6 l6 ">
-                <div className="card-panel  red lighten-1  z-depth-1">
+                <div className="card-panel  red lighten-1  z-depth-1" onClick={this.handleSelectCity}>
                     <div className="valign-wrapper">
                         <div className="col s2">
                             <img src={"/images/" + this.props.img} className="circle responsive-img"/>
                         </div>
                         <div className="col s10">
-                            <div onClick={ this.handleSelectCity } data="" className="city"><strong>{this.props.name}</strong></div>
+                            <div data="" className="city"><strong>{this.props.name}</strong></div>
                         </div>
                     </div>
                 </div>

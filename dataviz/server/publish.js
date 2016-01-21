@@ -19,5 +19,3 @@ if (Meteor.isServer) {
 		return this.ready();
 	});
 }
-
-//template subscribing

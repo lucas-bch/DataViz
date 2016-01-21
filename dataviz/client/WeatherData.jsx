@@ -181,7 +181,6 @@ WeatherData = React.createClass({
     },
 
     setData : function(e, option) {
-        console.log(e.target.id);
         this.setState({displayedData : e.target.id});
         this.componentDidUpdate();
     },
@@ -191,13 +190,9 @@ WeatherData = React.createClass({
     },
 
     componentWillReceiveProps : function(nextProps) {
-        // Maybe to be deleted. Maybe not.
-        console.log(nextProps.city);
-        console.log(Weather.find().fetch());
         var result = Weather.find({"city.name": nextProps.city}).fetch();
-        console.log(result);
         result = result[0];
-        if (this.isMounted()) {
+        if (this.isMounted() && result != undefined) {
             result.list.forEach(function(element, index){
                 // convertion de température
                 element.main.temp = (element.main.temp - 273).toFixed(1);
