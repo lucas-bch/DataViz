@@ -219,7 +219,7 @@ WeatherData = React.createClass({
     getDisplayedDataInfo : function () {
         var sentence = "forecast for ";
         if (this.state.timeScale == 0) {
-            sentence = sentence + "24h"
+            sentence = sentence + "24h";
         } else {
             sentence = sentence + "4 days, starting tomorrow. Blue : Morning | Green : Afternoon";
         }
