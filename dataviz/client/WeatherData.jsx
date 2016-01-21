@@ -171,29 +171,18 @@ WeatherData = React.createClass({
     },
 
     set1day: function(e,option){
-        //this.setState({data : getDataDay1()})
         this.state.weather.updateData(this.getDataDay1());
         this.setState({timeScale : 0});
     },
 
     set5days: function(e,option){
-        //this.setState({data : getData4Days()})
         this.state.weather.updateData(this.getData4Days());
         this.setState({timeScale : 1});
     },
 
-    setTemp : function(e, option) {
-        this.setState({displayedData : "Temp"});
-        this.componentDidUpdate();
-    },
-
-    setWind : function(e, option) {
-        this.setState({displayedData : "Wind"});
-        this.componentDidUpdate();
-    },
-
-    setRain : function(e, option) {
-        this.setState({displayedData : "Rain"});
+    setData : function(e, option) {
+        console.log(e.target.id);
+        this.setState({displayedData : e.target.id});
         this.componentDidUpdate();
     },
 
@@ -262,11 +251,11 @@ WeatherData = React.createClass({
                                     </div>
                                     <div className="col m2 l2 weather-types ">
 
-                                        <a className="type-weather btn-floating btn-large waves-effect waves-light red" onClick={this.setTemp}><i className="wi wi-thermometer-exterior"></i></a>
+                                        <a className="type-weather btn-floating btn-large waves-effect waves-light red" onClick={this.setData}><i className="wi wi-thermometer-exterior" id="Temp"></i></a>
 
-                                        <a className="type-weather btn-floating btn-large waves-effect waves-light green" onClick={this.setWind}><i className="wi wi-strong-wind"></i></a>
+                                        <a className="type-weather btn-floating btn-large waves-effect waves-light green" onClick={this.setData}><i className="wi wi-strong-wind" id="Wind"></i></a>
 
-                                        <a className="type-weather btn-floating btn-large waves-effect waves-light blue" onClick={this.setRain}><i className="wi wi-rain"></i></a>
+                                        <a className="type-weather btn-floating btn-large waves-effect waves-light blue" onClick={this.setData}><i className="wi wi-rain" id="Rain"></i></a>
                                     </div>
                                 </div>
                             </div>
