@@ -4,7 +4,11 @@ var now = new Date();
 var options = {
     height: '250px',
     low: 0,
-    showArea: true
+    showArea: true,
+    axisY: {
+            type: Chartist.FixedScaleAxis,
+            divisor: 4
+        }
 };
 
 
@@ -14,7 +18,7 @@ WeatherData = React.createClass({
     },
 
     getDataDay1 : function() {
-        
+
         var serie = [3, 4, 4, 2, 3, 2, 1, 5];
         var labels = ['03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00','00:00'];
 
@@ -69,7 +73,7 @@ WeatherData = React.createClass({
     },
 
     getData4Days : function() {
-        
+
         var daysOfWeek = new Array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
         var tomorrow = (now.getDay() + 1) % 7;
 
@@ -290,16 +294,8 @@ var WeatherGraph = (function(){
         this.selector = selector;
         this.data = data ;
         this.options = options;
-        if(legend) {
-            this.legend = legend;
-        }
-        this.chart = new Chartist.Line(
-            this.selector, 
-            data, 
-            options, 
-            {plugins: [Chartist.plugins.legend({legendNames:this.legend})]} // not working
-            );
-        
+        this.chart = new Chartist.Line(this.selector, data, options);
+
         // Let's put a sequence number aside so we can use it in the event callbacks
         this.seq = 0;
 

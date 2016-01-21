@@ -6,7 +6,7 @@ App = React.createClass({
         if (dataSub && (searchedCity != this.state.city)){
             dataSub.stop();
         }
-        dataSub = Meteor.subscribe("weatherData", searchedCity); 
+        dataSub = Meteor.subscribe("weatherData", searchedCity);
 
         this.setState({city: searchedCity, loaderState: 'open'});
 
@@ -43,7 +43,7 @@ App = React.createClass({
         return (
             <div className="weather-cover">
                 <Loader state={this.state.loaderState}/>
-                
+
                 <OrganicSearch searchHandler={ this.search } scenarioState={ this.state.scenarioState } />
                 <main className={ this.state.scenarioState }>
                     <div style={{height: this.state.windowHeight+ 'px',width: this.state.windowWidth+ 'px'}} className=" weather-wrapper">
