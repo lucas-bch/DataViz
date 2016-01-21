@@ -10,7 +10,7 @@ App = React.createClass({
             onReady: function(){
                 console.log("we subscribed to weatherData " + searchedCity + " :) ");
             }
-        }); 
+        });
 
         this.setState({city: searchedCity, loaderState: 'open'});
 
@@ -48,7 +48,7 @@ App = React.createClass({
         return (
             <div className="weather-cover">
                 <Loader state={this.state.loaderState}/>
-                
+
                 <OrganicSearch searchHandler={ this.search } scenarioState={ this.state.scenarioState } />
                 <main className={ this.state.scenarioState }>
                     <div style={{height: this.state.windowHeight+ 'px',width: this.state.windowWidth+ 'px'}} className=" weather-wrapper">
@@ -62,10 +62,3 @@ App = React.createClass({
         );
     }
 });
-
-// Kévin teste ton code avant de merge stp :p
-/*<div id="btn-statistiques" className="fixed-action-btn">
-                    <a  href="#statistiques" className="btn-floating blue lighten-1  btn-large">
-                        <i className=" material-icons">assessment</i>
-                    </a>
-                </div>*/
