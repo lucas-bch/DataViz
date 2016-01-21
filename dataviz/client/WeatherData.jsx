@@ -6,8 +6,8 @@ var options = {
     low: 0,
     showArea: true,
     axisY: {
-            type: Chartist.FixedScaleAxis,
-            divisor: 4
+            type: Chartist.AutoScaleAxis,
+            onlyInteger: true,
         }
 };
 
@@ -19,7 +19,7 @@ WeatherData = React.createClass({
 
     getDataDay1 : function() {
 
-        var serie = [3, 4, 4, 2, 3, 2, 1, 5];
+        var serie = [3, 4, 4, 2, 4.5, 2, 1, 5.6];
         var labels = ['03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00','00:00'];
 
         if(this.state.list[1] != undefined) {

@@ -78,6 +78,7 @@ body {
         height: 160px;
         margin: 0px auto;
         transform: translate3d(0px, 3em, 0px);
+        transition: all $transition_duration cubic-bezier(0.7, 0, 0.3, 1) 0ms;
         position: relative;
         transition-property: width, height, transform;
         transition-duration: $transition_duration;
@@ -121,7 +122,7 @@ body {
 
       &.start {
         .organic_search_control {
-          top: 50%;
+          top: 30%;
           right: 50%;
           transform: translate(-100px, -50%);
           cursor: default;
@@ -130,7 +131,7 @@ body {
           display: block;
           height: 50px;
           width: 300px;
-          top: 50%;
+            top: 30%;
           position: fixed;
           right: 50%;
           font-size: 9px;

@@ -35,7 +35,6 @@ OrganicSearch = React.createClass({
 
     handleKeyPress: function(e) {
         var inputString = e.target.value.toLowerCase();
-
         if (inputString.length>0){
             if (citiesSub) {
                 citiesSub.stop();
@@ -44,7 +43,7 @@ OrganicSearch = React.createClass({
             citiesSub = Meteor.subscribe("cities", inputString);
 
             var cityList = [];
-            
+
             City.find().fetch().forEach(function(city) {
                 cityList.push(city.name);
             });
