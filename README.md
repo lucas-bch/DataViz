@@ -4,9 +4,6 @@ We are using the 5 day / 3 hour data from the openweathermap api (http://openwea
 
 The data are first treated with Hadoop, then we calculate some averages with Spark, and we send the modified data to mongo.
 
-You can find the app running here : http://dataviz.eu-gb.mybluemix.net/
-
-
 Install Meteor :
 
 Linux : curl https://install.meteor.com/ | sh
