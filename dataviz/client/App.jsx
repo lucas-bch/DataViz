@@ -1,4 +1,8 @@
 var dataSub;
+
+City = new Mongo.Collection("city");
+Weather = new Mongo.Collection("weather");
+
 App = React.createClass({
     search: function(e,searchedCity) {
         e.preventDefault();
@@ -50,7 +54,7 @@ App = React.createClass({
                         <WeatherData city={ this.state.city} />
                     </div>
                     <div className="historic-wrapper">
-                        <Historic />
+                        <Historic city={this.state.city} />
                     </div>
                 </main>
             </div>

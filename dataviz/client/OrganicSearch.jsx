@@ -1,4 +1,5 @@
 var citiesSub;
+
 OrganicSearch = React.createClass({
 
     getInitialState: function() {
@@ -46,7 +47,7 @@ OrganicSearch = React.createClass({
             var cityList = [];
 
             City.find().fetch().forEach(function(city) {
-                cityList.push(city.name);
+                cityList.push(city.city.name);
             });
 
             this.setState({

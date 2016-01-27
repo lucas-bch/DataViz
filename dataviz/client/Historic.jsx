@@ -6,24 +6,27 @@ Historic = React.createClass({
         return {
             avg: {
                 "temp": 0, 
-                "wind": 6, 
-                "rain": 7
+                "wind": 0, 
+                "rain": 0
             },
             max: {
                 "temp": 0, 
-                "wind": 9,
-                "rain": 10
+                "wind": 0,
+                "rain": 0
             },
             min: {
                 "temp": 0,
-                "wind": 12,
-                "rain": 13
+                "wind": 0,
+                "rain": 0
             }
         };
 
     },
 
     componentWillReceiveProps : function(nextProps) {
+        console.log(nextProps);
+        var result = Weather.find({"city.name": nextProps.city}).fetch();
+        console.log(result);
         this.setState({
                 avg: {"temp": 5, "wind": 6, "rain": 7},
                 max: {"temp": 8, "wind": 9, "rain": 10},
