@@ -203,11 +203,12 @@ WeatherData = React.createClass({
 
     componentWillReceiveProps : function(nextProps) {
         // Maybe to be deleted. Maybe not.
-        console.log(nextProps.city);
-        console.log(Weather.find().fetch());
+        //console.log(nextProps.city);
+        //console.log(Weather.find().fetch());
         var result = Weather.find({"city.name": nextProps.city}).fetch();
-        console.log(result);
+        console.log(nextProps.city);
         result = result[0];
+
         if (this.isMounted()) {
             result.list.forEach(function(element, index){
                 // convertion de température

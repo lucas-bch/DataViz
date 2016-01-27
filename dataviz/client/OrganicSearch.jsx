@@ -41,15 +41,10 @@ OrganicSearch = React.createClass({
                 citiesSub.stop();
             }
 
-            citiesSub = Meteor.subscribe("cities", inputString, {
-                onReady: function(){
-                    console.log("we subscribed to cities " + inputString + " :) ");
-                    //that.props.cities= City.find().fetch();
-                }
-            });
+            citiesSub = Meteor.subscribe("cities", inputString, {});
 
             var cityList = [];
-            
+
             City.find().fetch().forEach(function(city) {
                 cityList.push(city.name);
             });
