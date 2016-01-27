@@ -1,0 +1,1 @@
+City = new Mongo.Collection("city");

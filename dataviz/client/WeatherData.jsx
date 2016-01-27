@@ -4,7 +4,11 @@ var now = new Date();
 var options = {
     height: '250px',
     low: 0,
-    showArea: true
+    showArea: true,
+    axisY: {
+            type: Chartist.AutoScaleAxis,
+            onlyInteger: true,
+        }
 };
 
 
@@ -14,8 +18,8 @@ WeatherData = React.createClass({
     },
 
     getDataDay1 : function() {
-        
-        var serie = [3, 4, 4, 2, 3, 2, 1, 5];
+
+        var serie = [3, 4, 4, 2, 4.5, 2, 1, 5.6];
         var labels = ['03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00','00:00'];
 
         if(this.state.list[1] != undefined) {
@@ -69,7 +73,7 @@ WeatherData = React.createClass({
     },
 
     getData4Days : function() {
-        
+
         var daysOfWeek = new Array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
         var tomorrow = (now.getDay() + 1) % 7;
 
@@ -171,29 +175,17 @@ WeatherData = React.createClass({
     },
 
     set1day: function(e,option){
-        //this.setState({data : getDataDay1()})
         this.state.weather.updateData(this.getDataDay1());
         this.setState({timeScale : 0});
     },
 
     set5days: function(e,option){
-        //this.setState({data : getData4Days()})
         this.state.weather.updateData(this.getData4Days());
         this.setState({timeScale : 1});
     },
 
-    setTemp : function(e, option) {
-        this.setState({displayedData : "Temp"});
-        this.componentDidUpdate();
-    },
-
-    setWind : function(e, option) {
-        this.setState({displayedData : "Wind"});
-        this.componentDidUpdate();
-    },
-
-    setRain : function(e, option) {
-        this.setState({displayedData : "Rain"});
+    setData : function(e, option) {
+        this.setState({displayedData : e.target.id});
         this.componentDidUpdate();
     },
 
@@ -202,14 +194,9 @@ WeatherData = React.createClass({
     },
 
     componentWillReceiveProps : function(nextProps) {
-        // Maybe to be deleted. Maybe not.
-        //console.log(nextProps.city);
-        //console.log(Weather.find().fetch());
         var result = Weather.find({"city.name": nextProps.city}).fetch();
-        console.log(nextProps.city);
         result = result[0];
-
-        if (this.isMounted()) {
+        if (this.isMounted() && result != undefined) {
             result.list.forEach(function(element, index){
                 // convertion de température
                 element.main.temp = (element.main.temp - 273).toFixed(1);
@@ -225,8 +212,25 @@ WeatherData = React.createClass({
         if (this.state.timeScale == 0){
             this.state.weather.updateData(this.getDataDay1());
         } else {
-            this.state.weather.updateData(this.getData4Days());
+            this.state.weather.updateData(this.getData4Days(), ["morning", "afternoon"]);
         }
+    },
+
+    getDisplayedDataInfo : function () {
+        var sentence = "forecast for ";
+        if (this.state.timeScale == 0) {
+            sentence = sentence + "24h";
+        } else {
+            sentence = sentence + "4 days, starting tomorrow. Blue : Morning | Green : Afternoon";
+        }
+        if(this.state.displayedData === "Temp"){
+            sentence = "Temperature " + sentence;
+        } else if (this.state.displayedData === "Wind") {
+            sentence = "Wind " + sentence;
+        } else if (this.state.displayedData === "Rain") {
+            sentence = "Rain " + sentence;
+        }
+        return sentence;
     },
 
     render : function(){
@@ -263,12 +267,15 @@ WeatherData = React.createClass({
                                     </div>
                                     <div className="col m2 l2 weather-types ">
 
-                                        <a className="type-weather btn-floating btn-large waves-effect waves-light red" onClick={this.setTemp}><i className="wi wi-thermometer-exterior"></i></a>
+                                        <a className="type-weather btn-floating btn-large waves-effect waves-light red" onClick={this.setData}><i className="wi wi-thermometer-exterior" id="Temp"></i></a>
 
-                                        <a className="type-weather btn-floating btn-large waves-effect waves-light green" onClick={this.setWind}><i className="wi wi-strong-wind"></i></a>
+                                        <a className="type-weather btn-floating btn-large waves-effect waves-light green" onClick={this.setData}><i className="wi wi-strong-wind" id="Wind"></i></a>
 
-                                        <a className="type-weather btn-floating btn-large waves-effect waves-light blue" onClick={this.setRain}><i className="wi wi-rain"></i></a>
+                                        <a className="type-weather btn-floating btn-large waves-effect waves-light blue" onClick={this.setData}><i className="wi wi-rain" id="Rain"></i></a>
                                     </div>
+                                </div>
+                                <div className="row">
+                                    <div className="today-informations">{this.getDisplayedDataInfo()}</div>
                                 </div>
                             </div>
                         </div>
@@ -283,7 +290,7 @@ WeatherData = React.createClass({
 var WeatherGraph = (function(){
 
 
-    function WeatherGraph (selector, options, data){
+    function WeatherGraph (selector, options, data, legend){
         this.selector = selector;
         this.data = data ;
         this.options = options;
@@ -292,7 +299,7 @@ var WeatherGraph = (function(){
         // Let's put a sequence number aside so we can use it in the event callbacks
         this.seq = 0;
 
-// Once the chart is fully created we reset the sequence
+        // Once the chart is fully created we reset the sequence
         (this.chart).on('created', function() {
             this.seq = 0;
         });
@@ -330,10 +337,13 @@ var WeatherGraph = (function(){
 
     }
 
-    WeatherGraph.prototype.updateData = function(data){
+    WeatherGraph.prototype.updateData = function(data, legend){
         var self = this;
         if(undefined !== data){
             self.data = data;
+            if (legend) {
+                self.legend = legend;
+            }
             self.chart.update(self.data);
         }
         return this;
