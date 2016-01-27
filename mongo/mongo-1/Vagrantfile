@@ -1,0 +1,20 @@
+Vagrant.configure("2") do |config|
+  config.vm.define "mongo1" do |mongo1|
+    mongo1.vm.box     = "precise64"
+    mongo1.vm.box_url = "http://files.vagrantup.com/precise64.box"
+    mongo1.vm.hostname = "mongo1"
+
+    # mongo1.vm.network "33.33.33.10"
+    # mongo1.vm.network "private_network", type: "dhcp"
+    mongo1.vm.network "public_network", ip: "192.168.2.10"
+    mongo1.vm.network "forwarded_port", guest: 27017, host: 27019
+
+    mongo1.vm.provision :puppet do |puppet|
+      puppet.manifests_path = "manifests"
+      puppet.manifest_file  = "base.pp"
+      puppet.module_path    = "modules"
+    end
+   
+  end
+
+end
