@@ -40,10 +40,11 @@ def runCountry(country):
 	owmc = OpenWeatherMapClient()
 	for cityId in countryIdsList:
 		if numberPerMinute == 55:
-				time.sleep(60)
+				time.sleep(80)
 				numberPerMinute = 0
 		owmc.fiveDayForecast(cityId)
 		numberPerMinute+=1
+
 
 def help():
 	print "--gen:  Generates the ids files to execute the script using all the available cities"

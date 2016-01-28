@@ -32,13 +32,13 @@ def getCitiesIds():
 	return CITIES_ID.values()
 
 def getCitiesIdsByCountry(country):
-	Ids = []
+	Ids = dict()
 	with open('city.list.json') as json_data:
 		for line in json_data:
 			data = json.loads(line)
 			if data["country"] == country:
-				Ids.append(data["_id"])
-	return Ids
+				Ids[data["name"]] = data["_id"]
+	return Ids.values()
 
 def main(cityName,lon,lat):
 	print "CITY ID: " + str(findCityId(cityName,lon,lat))
