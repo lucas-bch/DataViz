@@ -1,6 +1,6 @@
 
 City = new Mongo.Collection('city');
-Weather = new Mongo.Collection("weather");
+Weather = new Mongo.Collection("forecast");
 
 if (Meteor.isServer) {
 	Meteor.publish("weatherData", function(city) {
@@ -12,7 +12,6 @@ if (Meteor.isServer) {
 	});
 
 	Meteor.publish("cities", function(search) {
-
 		search = search.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
 		var cities = City.find({"city.name":{$regex: search, $options: "i"}}, {limit:6});
 		
