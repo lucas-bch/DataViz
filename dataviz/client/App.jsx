@@ -1,7 +1,7 @@
 var dataSub;
 
 City = new Mongo.Collection("city");
-Weather = new Mongo.Collection("weather");
+Weather = new Mongo.Collection("forecast");
 
 App = React.createClass({
     search: function(e,searchedCity) {

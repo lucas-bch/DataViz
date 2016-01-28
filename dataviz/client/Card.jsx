@@ -9,12 +9,17 @@ BasicCard = React.createClass({
       },
       render: function() {
           return (
-              <div className={"card " + this.props.color +" white-text"} >
+          <div className={"card black-text"} >
+              <ul className="collection with-header">
+                  <li className= {"collection-header " + this.props.color }>
                       <h4 className="card-title">{this.props.title}</h4>
-                  <div className="card-content">
-                      <h4>{this.props.value + " " + this.props.unit}</h4>
-                  </div>
-              </div>
+                  </li>
+                  <li className="collection-item ">
+                      <h4> {this.props.value + " " + this.props.unit} </h4>
+                  </li>
+              </ul>
+          </div>
+
           );
       }
   });
@@ -31,12 +36,19 @@ BasicCard = React.createClass({
         },
         render: function() {
             return (
-                <div className={"card " + this.props.color +" white-text"} >
-                        <span className="card-title">{this.props.title}</span>
-                    <div className="card-content">
-                        <h4>{this.props.max + " " + this.props.unit}</h4>
-                        <h4>{this.props.min + " " + this.props.unit}</h4>
-                    </div>
+                <div className={"card black-text"} >
+                    <ul className="collection with-header">
+                        <li className= {"collection-header " + this.props.color }>
+                            <h4 className="card-title">{this.props.title}</h4>
+                        </li>
+                        <li className="collection-item ">
+                            <span>Max : {this.props.max + " " + this.props.unit}</span>
+                        </li>
+                        <li className="collection-item ">
+
+                            <span>Min : {this.props.min + " " + this.props.unit}</span>
+                        </li>
+                    </ul>
                 </div>
             );
         }

@@ -824,37 +824,43 @@ body #body-wrapper main .weather-wrapper .weather-body .weather-content-wrapper 
   margin: auto;
   margin-top: 20px;
 }
-/* line 201, ../scss/sass/main.scss */
+/* line 200, ../scss/sass/main.scss */
+body #body-wrapper main .weather-wrapper .weather-body .weather-content-wrapper .today-informations {
+  text-align: center;
+  color: black;
+  font-style: italic;
+}
+/* line 207, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-content-wrapper .weather-options .weather-option {
   display: block;
   margin: auto;
   margin-top: 20px;
 }
-/* line 211, ../scss/sass/main.scss */
+/* line 217, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .city-name-wrapper {
   text-align: center;
   color: #122b40;
   font-size: 7em;
 }
-/* line 217, ../scss/sass/main.scss */
+/* line 223, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper .weather-body .weather-temperature-wrapper {
   text-align: center;
 }
-/* line 222, ../scss/sass/main.scss */
+/* line 228, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper #temperature {
   color: #122b40;
   font-size: 6em;
 }
-/* line 227, ../scss/sass/main.scss */
+/* line 233, ../scss/sass/main.scss */
 body #body-wrapper main .weather-wrapper small {
   color: #122b40;
   font-size: 0.50em;
 }
-/* line 237, ../scss/sass/main.scss */
+/* line 243, ../scss/sass/main.scss */
 body #body-wrapper .historic-wrapper .historic-body .btn-floating {
   top: -50px;
 }
-/* line 240, ../scss/sass/main.scss */
+/* line 246, ../scss/sass/main.scss */
 body #body-wrapper .historic-wrapper .historic-body .tabs {
   margin-bottom: 50px;
 }
