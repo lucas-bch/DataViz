@@ -3,7 +3,6 @@
 import sys
 import os
 import json, urllib2, requests
-from pprint import pprint
 from citiesIdsFinder import findCityId
 
 class OpenWeatherMapClient():
@@ -24,17 +23,27 @@ class OpenWeatherMapClient():
 			data = self.makeARequest(requestInfo)
 			self.generateNewJson(data, "fiveDayForecast")
 		except Exception as ex:
+			with open("forecastLog",'a') as log:
+				log.write(requestInfo)
+				log.write("\n")
+				log.write(ex.args[0])
+				log.write("\n")
+
 			print requestInfo
 			print ex.args
 
 	def makeARequest(self, requestInfo):
 		try:
 			request = requests.get(requestInfo)
-			return request.json()
+			data = request.json()
+			if type(data) is dict and len(data.keys()) > 4: 
+				return request.json()
+			else:
+				raise Exception("Invalid return")
 		except ValueError:
 			print 'Problem Requesting:'
 			print requestInfo
-			raise Exception("Invalid Request")
+			#raise Exception("Invalid Request")
 
 	def generateNewJson(self, data, prefix):
 		#building the file name
@@ -44,6 +53,7 @@ class OpenWeatherMapClient():
 		lon = str(data[u'city'][u'coord'][u'lon'])
 		fileName = prefix+ "=" + "_".join([name,lon,lat]) + ".json"
 		#making sure that the directory exists
+
 		if not os.path.exists('data/'):
 				os.makedirs('data/')
 
@@ -76,6 +86,7 @@ class OpenWeatherMapClient():
 
 		with open("data/"+fileName,'w') as jsonFile:
 			json.dump(data,jsonFile)
+
 
 def tester():
 	owmc = OpenWeatherMapClient()

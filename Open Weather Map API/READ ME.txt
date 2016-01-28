@@ -29,7 +29,7 @@ put in the end of the file:
 
 To know if the script is scheduled to run: 
 
-> crontab -l
+> sudo nano /etc/crontab -l
 
 ******* TO FIND A CITY ID:
 
