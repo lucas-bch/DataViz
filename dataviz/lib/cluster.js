@@ -12,7 +12,8 @@ var connectOptions = {
   selfWeight: 1 // optional
 };
 
-Cluster.connect("mongodb://129.88.241.46:27019,129.88.241.47:27018,129.88.241.48:27020/dbName?replicaSet=sysdist&readPreference=primaryPreferred&w=majority", connectOptions)
+//Cluster.connect("mongodb://129.88.241.46:27019,129.88.241.47:27018,129.88.241.48:27020/dbName?replicaSet=sysdist&readPreference=primaryPreferred&w=majority", connectOptions)
+Cluster.connect("mongodb://localhost:27017/meteor", connectOptions)
 
 
 Cluster.register("serviceName");

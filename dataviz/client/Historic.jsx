@@ -1,4 +1,7 @@
 
+var roundOneDecimal = function(number) {
+    return Math.round( number * 10 ) / 10;
+};
 
 Historic = React.createClass({
 
@@ -26,27 +29,26 @@ Historic = React.createClass({
     componentWillReceiveProps : function(nextProps) {
         console.log(nextProps);
         var result = Weather.find({"city.name": nextProps.city}).fetch();
-        console.log(result);
-        this.setState({
-                avg: {"temp": 5, "wind": 6, "rain": 7},
-                max: {"temp": 8, "wind": 9, "rain": 10},
-                min: {"temp": 11, "wind": 12, "rain": 13}
-        });
 
-        /*var result = Weather.find({"city.name": nextProps.city}).fetch();
-        result = result[0];
-        if (this.isMounted() && result != undefined) {
-            result.list.forEach(function(element, index){
-                // convertion de température
-                element.main.temp = (element.main.temp - 273).toFixed(1);
-                element.wind.speed = (element.wind.speed * 3.6).toFixed(1);
-            });
+        if(result.length > 0) {
             this.setState({
-                avg: {temp: 5, wind: 6, rain: 7},
-                max: {temp: 8, wind: 9, rain: 10},
-                min: {temp: 11, wind: 12, rain: 13}
+                avg: {
+                    "temp": roundOneDecimal(result[0].stats.avg_temp_last5d), 
+                    "wind": 6, 
+                    "rain": 7
+                },
+                max: {
+                    "temp": 8, 
+                    "wind": 9, 
+                    "rain": 10
+                },
+                min: {
+                    "temp": 11, 
+                    "wind": 12, 
+                    "rain": 13
+                }
             });
-        }*/
+        }
     },
 
     render: function(){
