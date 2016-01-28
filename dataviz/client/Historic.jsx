@@ -27,7 +27,6 @@ Historic = React.createClass({
     },
 
     componentWillReceiveProps : function(nextProps) {
-        console.log(nextProps);
         var result = Weather.find({"city.name": nextProps.city}).fetch();
 
         if(result.length > 0) {

@@ -17,6 +17,26 @@ WeatherData = React.createClass({
         city: React.PropTypes.string.isRequired
     },
 
+    getIconFromWeather : function(weather) {
+        switch(weather.weather[0].main) {
+            case "Rain" : return "wi-rain";
+            break;
+            case "Thunderstorm" : return "wi-thunderstorm";
+            break;
+            case "Drizzle" : return "wi-rain-mix";
+            break;
+            case "Snow" : return "wi-snow";
+            break;
+            case "Clear" : return "wi-day-sunny";
+            break;
+            case "Clouds" : return "wi-cloud"
+            break;
+            default :
+                return "wi-day-sunny";
+            break;
+        }
+    },
+
     getDataDay1 : function() {
 
         var serie = [3, 4, 4, 2, 4.5, 2, 1, 5.6];
@@ -48,7 +68,7 @@ WeatherData = React.createClass({
                 }
             } else if (this.state.displayedData === "Rain"){
                 for (var i = 0; i<8; i++){
-                    if (this.state.list[i].rain["3h"] != undefined) {
+                    if (this.state.list[i].rain != undefined) {
                         serie[i] = this.state.list[i].rain["3h"];
                     } else {
                         serie[i] = 0;
@@ -109,12 +129,12 @@ WeatherData = React.createClass({
                 }
             } else if (this.state.displayedData === "Rain") {
                 for (var i=0; i<4; i++){
-                    if (this.state.list[index +i*8].rain['3h'] != undefined){
+                    if (this.state.list[index +i*8].rain != undefined){
                         morning[i] = this.state.list[index + i*8].rain['3h'];
                     } else {
                         morning[i] = 0;
                     }
-                    if (this.state.list[index +i*8 + 2].rain['3h'] != undefined){
+                    if (this.state.list[index +i*8 + 2].rain != undefined){
                         afternoon[i] = this.state.list[index + i*8 + 2].rain['3h'];
                     } else {
                         afternoon[i] = 0;
@@ -238,7 +258,7 @@ WeatherData = React.createClass({
             <div className="row weather-body">
                 <div className=" col m12 city-name-wrapper weather-intro">
                     <div  className="container">
-                        <h1 id="city" > { this.props.city } <i className="wi wi-day-sunny"></i></h1>
+                        <h1 id="city" > { this.props.city } <i className={"wi "+ this.getIconFromWeather(this.state.list[0])}></i></h1>
                         <div className=" weather-temperature-wrapper">
                             <div  id="temperature">
                                 <h1>
