@@ -30,7 +30,8 @@ Historic = React.createClass({
         console.log(nextProps);
         var result = Weather.find({"city.name": nextProps.city}).fetch();
 
-        this.setState({
+        if(result.length > 0) {
+            this.setState({
                 avg: {
                     "temp": roundOneDecimal(result[0].stats.avg_temp_last5d), 
                     "wind": 6, 
@@ -46,7 +47,8 @@ Historic = React.createClass({
                     "wind": 12, 
                     "rain": 13
                 }
-        });
+            });
+        }
     },
 
     render: function(){
