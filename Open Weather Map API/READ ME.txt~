@@ -39,8 +39,3 @@ or run
 
 > python cityIdsFinder.py for an example
 
-******* TO ADD THINGS TO THE DB:
-
-Put fix_and_add_all.sh, add_forecast.sh, add_historical.sh and
-correct_coords.py in the same folder as the data, and run fix_and_add_all.sh.
-
