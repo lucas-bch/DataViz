@@ -1,0 +1,8 @@
+{
+  "hosts" : [ "localhost:27018", "localhost:27019", "localhost:27020" ],
+  "database" : "weather_db",
+  "histColl" : "historical",
+  "foreColl" : "forecast",
+  "replicaSet" : "sysdist",
+  "readPreference" : "secondaryPreferred"
+}
