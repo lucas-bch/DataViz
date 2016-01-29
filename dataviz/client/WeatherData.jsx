@@ -17,6 +17,26 @@ WeatherData = React.createClass({
         city: React.PropTypes.string.isRequired
     },
 
+    getIconFromWeather : function(weather) {
+        switch(weather.weather[0].main) {
+            case "Rain" : return "wi-rain";
+            break;
+            case "Thunderstorm" : return "wi-thunderstorm";
+            break;
+            case "Drizzle" : return "wi-rain-mix";
+            break;
+            case "Snow" : return "wi-snow";
+            break;
+            case "Clear" : return "wi-day-sunny";
+            break;
+            case "Clouds" : return "wi-cloud"
+            break;
+            default :
+                return "wi-day-sunny";
+            break;
+        }
+    },
+
     getDataDay1 : function() {
 
         var serie = [3, 4, 4, 2, 4.5, 2, 1, 5.6];
@@ -48,7 +68,7 @@ WeatherData = React.createClass({
                 }
             } else if (this.state.displayedData === "Rain"){
                 for (var i = 0; i<8; i++){
-                    if (this.state.list[i].rain["3h"] != undefined) {
+                    if (this.state.list[i].rain != undefined) {
                         serie[i] = this.state.list[i].rain["3h"];
                     } else {
                         serie[i] = 0;
@@ -87,38 +107,61 @@ WeatherData = React.createClass({
         }
 
         if(this.state.list[1] != undefined) {
+            //current hour
             var hour = parseInt(this.state.list[0].dt_txt.split(' ')[1].replace(":00:00", ""), 10);
             var index = 0;
-            while (hour != 9) {
+
+            //go to the next day
+            while (hour < 24) {
                 index ++;
-                hour = (hour+3)%24;
+                hour = hour+3;
             }
-            // if hour < 12 then add 8 to get to the next day
-            if (index < 4)
-                index += 8;
 
             if(this.state.displayedData === "Temp") {
+                //avg temp from 0:00 to 12:00 (morning) and from 12:00 to 24:00 (afternoon)
+                //loop on days
                 for (var i=0; i<4; i++){
-                    morning[i] = this.state.list[index + i*8].main.temp;
-                    afternoon[i] = this.state.list[index + i*8 + 2].main.temp;
+                    var avg_morning_temp = 0;
+                    var avg_afternoon_temp = 0;
+                    //loop on 3h
+                    for(var j=0; j<4; j++) {
+                        avg_morning_temp += parseFloat(this.state.list[index + i*8 + j].main.temp);
+                        avg_afternoon_temp += parseFloat(this.state.list[index + i*8 + j+4].main.temp); 
+                    }
+                    morning[i] = avg_morning_temp / 4.0;
+                    afternoon[i] = avg_afternoon_temp / 4.0;
                 }
+                
             } else if (this.state.displayedData === "Wind") {
+                //loop on days
                 for (var i=0; i<4; i++){
-                    morning[i] = this.state.list[index + i*8].wind.speed;
-                    afternoon[i] = this.state.list[index + i*8 + 2].wind.speed;
+                    var avg_morning_wind = 0;
+                    var avg_afternoon_wind = 0;
+                    //loop on 3h
+                    for(var j=0; j<4; j++) {
+                        avg_morning_wind += parseFloat(this.state.list[index + i*8 + j].wind.speed);
+                        avg_afternoon_wind += parseFloat(this.state.list[index + i*8 + j+4].wind.speed); 
+                    }
+                    morning[i] = avg_morning_wind / 4.0;
+                    afternoon[i] = avg_afternoon_wind / 4.0;
                 }
             } else if (this.state.displayedData === "Rain") {
+                //loop on days
                 for (var i=0; i<4; i++){
-                    if (this.state.list[index +i*8].rain['3h'] != undefined){
-                        morning[i] = this.state.list[index + i*8].rain['3h'];
-                    } else {
-                        morning[i] = 0;
+                    var tot_rain_morning = 0;
+                    var tot_rain_afternoon = 0;
+                    //loop on 3h
+                    for(var j=0; j<4; j++) {
+                        if (this.state.list[index + i*8 + j].rain != undefined && this.state.list[index+1 + i*8 + j].rain['3h'] != undefined){
+                            tot_rain_morning += parseFloat(this.state.list[index + i*8 + j].main.temp);
+                        }
+
+                        if (this.state.list[index+1 + i*8 + j+4].rain != undefined && this.state.list[index+1 + i*8 + j+4].rain['3h'] != undefined){
+                            tot_rain_afternoon += parseFloat(this.state.list[index+1 + i*8 + j+4].main.temp); 
+                        }
                     }
-                    if (this.state.list[index +i*8 + 2].rain['3h'] != undefined){
-                        afternoon[i] = this.state.list[index + i*8 + 2].rain['3h'];
-                    } else {
-                        afternoon[i] = 0;
-                    }
+                    morning[i] = tot_rain_morning;
+                    afternoon[i] = tot_rain_afternoon;
                 }
             }
 
@@ -238,7 +281,7 @@ WeatherData = React.createClass({
             <div className="row weather-body">
                 <div className=" col m12 city-name-wrapper weather-intro">
                     <div  className="container">
-                        <h1 id="city" > { this.props.city } <i className="wi wi-day-sunny"></i></h1>
+                        <h1 id="city" > { this.props.city } <i className={"wi "+ this.getIconFromWeather(this.state.list[0])}></i></h1>
                         <div className=" weather-temperature-wrapper">
                             <div  id="temperature">
                                 <h1>
@@ -259,7 +302,7 @@ WeatherData = React.createClass({
 
                                         <a className="weather-option waves-effect waves-light btn-large" onClick={this.set1day}>Today</a>
 
-                                        <a className="weather-option waves-effect waves-light btn-large" onClick={this.set5days}>5 days</a>
+                                        <a className="weather-option waves-effect waves-light btn-large" onClick={this.set5days}>Forecast</a>
 
                                     </div>
                                     <div className="col m8 l8 weather-graph">
