@@ -1,6 +1,10 @@
 
 var roundOneDecimal = function(number) {
-    return Math.round( number * 10 ) / 10;
+    if(number != undefined) {
+        return Math.round( number * 10 ) / 10;    
+    }
+    return 0;
+    
 };
 
 Historic = React.createClass({
@@ -33,18 +37,18 @@ Historic = React.createClass({
             this.setState({
                 avg: {
                     "temp": roundOneDecimal(result[0].stats.avg_temp_last5d), 
-                    "wind": 6, 
-                    "rain": 7
+                    "wind": roundOneDecimal(result[0].stats.avg_wind_last5d),
+                    "rain": roundOneDecimal(result[0].stats.avg_rain_last5d),
                 },
                 max: {
-                    "temp": 8, 
-                    "wind": 9, 
-                    "rain": 10
+                    "temp": roundOneDecimal(result[0].stats.max_temp),
+                    "wind": roundOneDecimal(result[0].stats.max_wind),
+                    "rain": roundOneDecimal(result[0].stats.max_rain),
                 },
                 min: {
-                    "temp": 11, 
-                    "wind": 12, 
-                    "rain": 13
+                    "temp": roundOneDecimal(result[0].stats.min_temp),
+                    "wind": roundOneDecimal(result[0].stats.min_wind),
+                    "rain": roundOneDecimal(result[0].stats.min_rain),
                 }
             });
         }
